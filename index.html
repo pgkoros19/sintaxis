@@ -14,6 +14,7 @@
             --deep-charcoal: #222222;
             --terracotta-accent: #b35a44;
             --paper-white: #ffffff;
+            --light-bg: #f9f9f9;
         }
         
         body { 
@@ -52,67 +53,105 @@
 
         .container { max-width: 1100px; margin: auto; padding: 2rem; }
 
-        .section-title { text-align: center; color: var(--deep-charcoal); margin-top: 5rem; margin-bottom: 3rem; font-size: 2.2rem; position: relative; }
-
-        /* Services Cards */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { 
-            background: #fff; 
-            border: 1px solid var(--stone-grey); 
-            padding: 2.5rem; 
-            border-radius: 0; 
+        .section-group-title { 
             text-align: center; 
-            transition: 0.4s ease; 
-            height: 100%;
-            box-sizing: border-box;
-        }
-        .card:hover { transform: translateY(-8px); border-color: var(--terracotta-accent); box-shadow: 0 15px 35px rgba(0,0,0,0.06); }
-        .card i { font-size: 2.2rem; color: var(--terracotta-accent); margin-bottom: 20px; }
-        .card h3 { color: var(--deep-charcoal); margin-bottom: 12px; font-size: 1.25rem; }
-        .card p { font-size: 0.95rem; color: #555; font-weight: 400; }
-
-        /* Booking Section */
-        .booking-section { background: #fafafa; padding: 5rem 2rem; text-align: center; border: 1px solid #eee; margin-top: 5rem; }
-        .calendar-btn { 
-            display: inline-block; 
-            background: var(--terracotta-accent); 
-            color: white !important; 
-            padding: 22px 45px; 
-            text-decoration: none; 
-            font-weight: 700; 
-            font-size: 1.1rem; 
-            margin-top: 30px; 
             text-transform: uppercase; 
-            letter-spacing: 1px;
-            transition: 0.3s;
+            letter-spacing: 3px; 
+            color: var(--terracotta-accent); 
+            margin-top: 6rem;
+            font-size: 1rem;
+            font-weight: 700;
         }
+
+        .section-title { text-align: center; color: var(--deep-charcoal); margin-top: 1rem; margin-bottom: 1rem; font-size: 2.2rem; }
+        .section-intro { text-align: center; max-width: 800px; margin: 0 auto 3rem auto; color: #666; font-size: 1.1rem; }
+
+        .intro-card {
+            background: var(--light-bg);
+            border-left: 5px solid var(--terracotta-accent);
+            padding: 2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            gap: 20px;
+        }
+        .intro-text { flex: 1; }
+        .intro-text h3 { margin: 0 0 10px 0; color: var(--deep-charcoal); }
+        .intro-text p { margin: 0; font-size: 0.95rem; color: #555; }
+
+        .toggle-btn {
+            background: none;
+            border: 2px solid var(--terracotta-accent);
+            color: var(--terracotta-accent);
+            padding: 10px 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+            white-space: nowrap;
+            font-size: 0.8rem;
+        }
+        .toggle-btn:hover { background: var(--terracotta-accent); color: white; }
+
+        .details-content {
+            display: none;
+            padding: 2rem;
+            background: #fff;
+            border: 1px solid #eee;
+            margin-bottom: 2rem;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Timeline */
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; padding: 20px 0; }
+        .timeline::after { content: ''; position: absolute; width: 2px; background: var(--stone-grey); top: 0; bottom: 0; left: 50%; margin-left: -1px; }
+        .timeline-item { padding: 10px 40px; position: relative; width: 50%; box-sizing: border-box; }
+        .timeline-item::after { content: ''; position: absolute; width: 12px; height: 12px; right: -6px; background-color: white; border: 2px solid var(--terracotta-accent); top: 18px; border-radius: 50%; z-index: 1; }
+        .left { left: 0; text-align: right; }
+        .right { left: 50%; }
+        .right::after { left: -6px; }
+        .timeline-content h3 { color: var(--terracotta-accent); font-size: 1rem; margin: 0; }
+        .timeline-content p { font-size: 0.9rem; margin: 5px 0 0 0; }
+
+        ul.details-list { font-size: 0.95rem; color: #555; padding-left: 20px; margin-top: 10px; }
+        ul.details-list li { margin-bottom: 8px; }
+
+        /* App Promo Section */
+        .app-promo-card {
+            background: linear-gradient(135deg, var(--deep-charcoal) 0%, #3a3a3a 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 4px;
+            margin: 5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        .app-promo-icon { font-size: 4rem; color: var(--terracotta-accent); }
+        .app-promo-text h2 { margin-top: 0; color: white; }
+        .app-promo-text p { opacity: 0.9; font-size: 1.1rem; }
+        .app-badge { display: inline-block; background: var(--terracotta-accent); padding: 5px 12px; font-size: 0.75rem; font-weight: 700; border-radius: 3px; margin-bottom: 10px; }
+
+        .booking-section { background: #fafafa; padding: 5rem 2rem; text-align: center; border: 1px solid #eee; margin-top: 5rem; }
+        .calendar-btn { display: inline-block; background: var(--terracotta-accent); color: white !important; padding: 22px 45px; text-decoration: none; font-weight: 700; text-transform: uppercase; margin-top: 30px; transition: 0.3s; }
         .calendar-btn:hover { background: var(--deep-charcoal); }
 
-        /* Contact Section */
         .contact-box { background: var(--deep-charcoal); color: white; padding: 5rem 2rem; text-align: center; margin-top: 5rem; }
         .phone-style { font-size: 1.5rem; letter-spacing: 2px; color: var(--terracotta-accent); font-weight: 700; margin: 15px 0; display: block; }
-        .map-button { display: inline-block; border: 2px solid var(--terracotta-accent); color: white !important; padding: 14px 30px; text-decoration: none; margin-top: 25px; font-weight: 700; text-transform: uppercase; }
-        .map-button:hover { background: var(--terracotta-accent); }
 
-        /* Chat Widget Fixed */
-        #ai-chat-container { position: fixed; bottom: 30px; right: 30px; z-index: 9999; }
-        #chat-button { background: var(--terracotta-accent); color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,0.2); border: none; }
-        #chat-window { 
-            display: none; 
-            width: 320px; 
-            background: white; 
-            position: absolute; 
-            bottom: 85px; 
-            right: 0; 
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2); 
-            border: 1px solid #ddd;
-            overflow: hidden;
+        @media screen and (max-width: 768px) {
+            .intro-card { flex-direction: column; text-align: center; }
+            .app-promo-card { flex-direction: column; text-align: center; padding: 2rem; }
+            .timeline::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; text-align: left; }
+            .timeline-item::after { left: 25px; }
+            .right { left: 0%; }
         }
-        #chat-header { background: var(--deep-charcoal); color: white; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; font-size: 0.9rem; }
-        #chat-body { padding: 25px; text-align: center; }
-        .form-btn { display: block; background: var(--terracotta-accent); color: white !important; padding: 15px; text-decoration: none; font-weight: bold; margin-top: 15px; }
-
-        footer { text-align: center; padding: 4rem; font-size: 0.8rem; color: #999; text-transform: uppercase; letter-spacing: 2px; }
     </style>
 </head>
 <body>
@@ -123,75 +162,226 @@
 </header>
 
 <nav>
-    <a href="#services">Υπηρεσίες</a>
+    <a href="#pensions">Συντάξεις</a>
+    <a href="#benefits">Επιδόματα</a>
+    <a href="#vehicles">Μεταβιβάσεις</a>
+    <a href="#other">Υπηρεσίες</a>
     <a href="#booking">Ραντεβού</a>
-    <a href="#contact">Επικοινωνία</a>
 </nav>
 
 <div class="container">
     
-    <section id="services">
-        <h2 class="section-title">Συντάξεις Γήρατος</h2>
-        <div class="services-grid">
-            <div class="card"><i class="fas fa-calendar-check"></i><h3>1. Δικαίωμα & Χρόνος</h3><p>Έλεγχος θεμελίωσης συνταξιοδοτικού δικαιώματος.</p></div>
-            <div class="card"><i class="fas fa-balance-scale"></i><h3>2. Σύγκριση Σεναρίων</h3><p>Ανάλυση για εξαγορές πλασματικών ετών ή μειωμένη σύνταξη.</p></div>
-            <div class="card"><i class="fas fa-calculator"></i><h3>3. Υπολογισμός Ποσού</h3><p>Ακριβής υπολογισμός του ποσού της σύνταξης.</p></div>
-            <div class="card"><i class="fas fa-folder-open"></i><h3>4. Δικαιολογητικά</h3><p>Οργάνωση πλήρους φακέλου για την αίτηση.</p></div>
-            <div class="card"><i class="fas fa-paper-plane"></i><h3>5. Κατάθεση</h3><p>Υποβολή ηλεκτρονικής αίτησης και παρακολούθηση πορείας.</p></div>
-            <div class="card"><i class="fas fa-check-double"></i><h3>6. Έλεγχος Πληρωμής</h3><p>Τελική επιβεβαίωση αναδρομικών και ποσού.</p></div>
-        </div>
-    </section>
+    <div class="section-group-title" id="pensions">Υπηρεσίες Συνταξιοδότησης</div>
+    <h2 class="section-title">Συντάξεις</h2>
+    <p class="section-intro">Πλήρης υποστήριξη για την έκδοση κάθε είδους σύνταξης, με εξειδικευμένο έλεγχο οφειλών και καταμέτρηση χρόνου ασφάλισης.</p>
 
-    <section>
-        <h2 class="section-title" style="margin-top: 6rem;">Εξειδικευμένες Υποθέσεις</h2>
-        <div class="services-grid">
-            <div class="card"><i class="fas fa-wheelchair"></i><h3>Συντάξεις Αναπηρίας</h3><p>Διεκπεραίωση αιτημάτων λόγω ατυχήματος ή νόσου.</p></div>
-            <div class="card"><i class="fas fa-heart"></i><h3>Συντάξεις Θανάτου</h3><p>Μεταβίβαση σύνταξης λόγω συνταξιούχου ή απονομή σύνταξης λόγω θανάτου ασφαλισμένου.</p></div>
-            <div class="card"><i class="fas fa-file-medical-alt"></i><h3>Αιτήματα ΚΕΠΑ</h3><p>Ηλεκτρονική αίτηση για πιστοποίηση αναπηρίας από επιτροπές.</p></div>
-            <div class="card"><i class="fas fa-hands-helping"></i><h3>Ανασφάλιστοι Υπερήλικες</h3><p>Διαδικασίες για το επίδομα Ανασφάλιστων Υπερηλίκων (ΟΠΕΚΑ).</p></div>
-            <div class="card"><i class="fas fa-list-ol"></i><h3>Καταμέτρηση Ενσήμων</h3><p>Επίσημη προσυνταξιοδοτική βεβαίωση για ακριβή χρόνο ασφάλισης.</p></div>
-            <div class="card"><i class="fas fa-hand-holding-medical"></i><h3>Εξωιδρυματικό Επίδομα</h3><p>Διεκπεραίωση αιτήσεων για το επίδομα παραπληγίας - τετραπληγίας (ασφαλισμένων & συνταξιούχων).</p></div>
+    <div class="intro-card">
+        <div class="intro-text">
+            <h3>Συντάξεις Γήρατος</h3>
+            <p>Πλήρης διαχείριση της αίτησής σας, από τη θεμελίωση έως την τελική απόφαση.</p>
         </div>
-    </section>
+        <button class="toggle-btn" onclick="toggleSection('details-ghratos', this)">Διαδικασία <i class="fas fa-chevron-down"></i></button>
+    </div>
+    <div id="details-ghratos" class="details-content">
+        <div class="timeline">
+            <div class="timeline-item left"><div class="timeline-content"><h3>1. Δικαίωμα & Χρόνος</h3><p>Έλεγχος θεμελίωσης συνταξιοδοτικού δικαιώματος.</p></div></div>
+            <div class="timeline-item right"><div class="timeline-content"><h3>2. Σύγκριση Σεναρίων</h3><p>Ανάλυση για εξαγορές πλασματικών ετών ή μειωμένη σύνταξη.</p></div></div>
+            <div class="timeline-item left"><div class="timeline-content"><h3>3. Διαχείριση Οφειλών</h3><p>Έλεγχος χρεών στον ΕΦΚΑ, ρυθμίσεις και συμψηφισμοί για την απεμπλοκή της σύνταξης.</p></div></div>
+            <div class="timeline-item right"><div class="timeline-content"><h3>4. Επικαιροποίηση Στοιχείων</h3><p>Έλεγχος και ταυτοποίηση στοιχείων (ΕΦΚΑ, ΔΟΥ, Ληξιαρχείο).</p></div></div>
+            <div class="timeline-item left"><div class="timeline-content"><h3>5. Υπολογισμός Ποσού</h3><p>Πρόβλεψη του τελικού ποσού της σύνταξης.</p></div></div>
+            <div class="timeline-item right"><div class="timeline-content"><h3>6. Κατάθεση & Παρακολούθηση</h3><p>Υποβολή ηλεκτρονικής αίτησης και έλεγχος της πορείας της.</p></div></div>
+        </div>
+    </div>
+
+    <div class="intro-card">
+        <div class="intro-text">
+            <h3>Συντάξεις Αναπηρίας</h3>
+            <p>Εξειδικευμένη υποστήριξη για αιτήματα λόγω ατυχήματος ή νόσου.</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSection('details-anapiria', this)">Πληροφορίες <i class="fas fa-chevron-down"></i></button>
+    </div>
+    <div id="details-anapiria" class="details-content">
+        <p>Αναλαμβάνουμε τον <strong>έλεγχο προϋποθέσεων</strong> και τη συγκέντρωση όλων των απαραίτητων εγγράφων:</p>
+        <ul class="details-list">
+            <li>Γνωματεύσεις <strong>ΚΕΠΑ</strong> και ιατρικές βεβαιώσεις.</li>
+            <li>Πιστοποιητικά και επίσημα έγγραφα ασφαλιστικών φορέων.</li>
+            <li>Πλήρης οργάνωση ιατρικού και ασφαλιστικού φακέλου για την επιτροπή.</li>
+        </ul>
+    </div>
+
+    <div class="intro-card">
+        <div class="intro-text">
+            <h3>Συντάξεις Θανάτου</h3>
+            <p>Άμεση μεταβίβαση ή απονομή σύνταξης σε περιπτώσεις απώλειας.</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSection('details-thanatos', this)">Πληροφορίες <i class="fas fa-chevron-down"></i></button>
+    </div>
+    <div id="details-thanatos" class="details-content">
+        <p>Διεκπεραιώνουμε τον <strong>έλεγχο προϋποθέσεων</strong> για τη μεταβίβαση σε περίπτωση θανάτου συνταξιούχου ή την απονομή λόγω θανάτου ασφαλισμένου:</p>
+        <ul class="details-list">
+            <li><strong>Ληξιαρχική πράξη θανάτου</strong>.</li>
+            <li><strong>Πιστοποιητικό εγγυτέρων συγγενών</strong>.</li>
+            <li>Συγκέντρωση όλων των απαραίτητων βεβαιώσεων για την άμεση κατοχύρωση της παροχής.</li>
+        </ul>
+    </div>
+
+    <div class="intro-card">
+        <div class="intro-text">
+            <h3>Καταμέτρηση Ενσήμων</h3>
+            <p>Επίσημη βεβαίωση για τον ακριβή χρόνο ασφάλισής σας πριν την αίτηση.</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSection('details-ensima', this)">Πληροφορίες <i class="fas fa-chevron-down"></i></button>
+    </div>
+    <div id="details-ensima" class="details-content">
+        <p>Η καταμέτρηση αποτελεί το θεμέλιο για τη συνταξιοδότηση. <strong>Υπηρεσίες:</strong></p>
+        <ul class="details-list">
+            <li><strong>Προσυνταξιοδοτική Βεβαίωση:</strong> Έκδοση επίσημου εγγράφου για τον χρόνο ασφάλισης.</li>
+            <li><strong>Έλεγχος Διαδοχικής:</strong> Ενοποίηση χρόνων από διαφορετικά ταμεία (ΙΚΑ, ΟΑΕΕ, κ.α.).</li>
+            <li><strong>Εντοπισμός Κενών:</strong> Συμβουλευτική για την κάλυψη ασφαλιστικών κενών.</li>
+        </ul>
+    </div>
+
+
+    <div class="section-group-title" id="benefits">Κοινωνική Πρόνοια</div>
+    <h2 class="section-title">Επιδόματα</h2>
+    <p class="section-intro">Διεκπεραιώνουμε αιτήσεις για κρατικά βοηθήματα, αναλαμβάνοντας τον έλεγχο ιατρικών και οικονομικών κριτηρίων.</p>
+
+    <div class="intro-card">
+        <div class="intro-text">
+            <h3>Επίδομα Απολύτου Αναπηρίας</h3>
+            <p>Προσαύξηση σύνταξης για όσους χρήζουν βοήθειας ετέρου προσώπου.</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSection('details-apolyto', this)">Πληροφορίες <i class="fas fa-chevron-down"></i></button>
+    </div>
+    <div id="details-apolyto" class="details-content">
+        <p><strong>Έλεγχος προϋποθέσεων:</strong> Διαπίστωση αν η αναπηρία εμπίπτει στις διατάξεις του ετέρου προσώπου και υποβολή της αίτησης στον ασφαλιστικό φορέα.</p>
+    </div>
+
+    <div class="intro-card">
+        <div class="intro-text">
+            <h3>Ανασφάλιστοι Υπερήλικες (ΟΠΕΚΑ)</h3>
+            <p>Διαδικασίες για το βοήθημα κοινωνικής αλληλεγγύης.</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSection('details-opeka', this)">Πληροφορίες <i class="fas fa-chevron-down"></i></button>
+    </div>
+    <div id="details-opeka" class="details-content">
+        <p><strong>Έλεγχος Κριτηρίων:</strong> Εξέταση ηλικιακών, εισοδηματικών και περιουσιακών στοιχείων (Ε1, Ε9) για την ένταξη στο βοήθημα.</p>
+    </div>
+
+    <div class="intro-card">
+        <div class="intro-text">
+            <h3>Εξωιδρυματικό Επίδομα</h3>
+            <p>Υποστήριξη για το επίδομα παραπληγίας - τετραπληγίας.</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSection('details-exo', this)">Πληροφορίες <i class="fas fa-chevron-down"></i></button>
+    </div>
+    <div id="details-exo" class="details-content">
+        <p>Αφορά ασφαλισμένους και συνταξιούχους με συγκεκριμένες κινητικές αναπηρίες. Προετοιμασία ιατρικού φακέλου και υποβολή αιτημάτων για την πιστοποίηση από τις υγειονομικές επιτροπές.</p>
+    </div>
+
+
+    <div class="section-group-title" id="vehicles">Οχήματα & Μετακίνηση</div>
+    <h2 class="section-title">Μεταβιβάσεις Οχημάτων</h2>
+    <p class="section-intro">Ολοκληρωμένη διαχείριση για τη μεταβίβαση κυριότητας οχημάτων, είτε μέσω Υπουργείου είτε ψηφιακά.</p>
+
+    <div class="intro-card">
+        <div class="intro-text">
+            <h3>Ηλεκτρονική Μεταβίβαση (Gov.gr)</h3>
+            <p>Μεταβίβαση Ι.Χ. επιβατικών και δικύκλων εύκολα και γρήγορα.</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSection('details-digital-transfer', this)">Διαδικασία <i class="fas fa-chevron-down"></i></button>
+    </div>
+    <div id="details-digital-transfer" class="details-content">
+        <p>Αξιοποιούμε την ψηφιακή πλατφόρμα του Gov.gr για ταχύτερη διεκπεραίωση:</p>
+        <ul class="details-list">
+            <li><strong>Προϋποθέσεις:</strong> Ισχύον ΚΤΕΟ, μη ύπαρξη παρακράτησης κυριότητας και εξοφλημένα τέλη.</li>
+            <li><strong>Διαδικασία:</strong> Ηλεκτρονική αποδοχή από αγοραστή και πωλητή και άμεση έκδοση της προσωρινής άδειας.</li>
+        </ul>
+    </div>
+
+    <div class="intro-card">
+        <div class="intro-text">
+            <h3>Αγροτικά Οχήματα (Φ.Ι.Χ.)</h3>
+            <p>Εξειδικευμένη διαδικασία για οχήματα αγροτικής χρήσης.</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSection('details-agrotika', this)">Πληροφορίες <i class="fas fa-chevron-down"></i></button>
+    </div>
+    <div id="details-agrotika" class="details-content">
+        <p><strong>Βεβαίωση ΜΑΑΕ:</strong> Έλεγχος εγγραφής στο Μητρώο Αγροτών και επιβεβαίωση της αγροτικής ιδιότητας και του εισοδήματος για την έγκριση της μεταβίβασης.</p>
+    </div>
+
+
+    <div class="section-group-title" id="other">Ψηφιακές Υπηρεσίες</div>
+    <h2 class="section-title">Εξειδικευμένες Ενέργειες</h2>
+    <p class="section-intro">Διαχείριση των ψηφιακών σας στοιχείων και των αιτημάτων προς τις υγειονομικές επιτροπές.</p>
+
+    <div class="intro-card">
+        <div class="intro-text">
+            <h3>Δήλωση Στοιχείων στο ΕΜΕΠ</h3>
+            <p>Επικαιροποίηση στοιχείων επικοινωνίας στο Ενιαίο Μητρώο.</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSection('details-emep', this)">Πληροφορίες <i class="fas fa-chevron-down"></i></button>
+    </div>
+    <div id="details-emep" class="details-content">
+        <p>Διασφαλίζουμε την ορθή δήλωση του κινητού τηλεφώνου και του email σας στο Ενιαίο Μητρώο Επικοινωνίας, ώστε να λαμβάνετε έγκυρα όλες τις ενημερώσεις και τα έγγραφα από το κράτος.</p>
+    </div>
+
+    <div class="intro-card">
+        <div class="intro-text">
+            <h3>Αιτήματα ΚΕΠΑ</h3>
+            <p>Πιστοποίηση αναπηρίας από τις αρμόδιες επιτροπές.</p>
+        </div>
+        <button class="toggle-btn" onclick="toggleSection('details-kepa', this)">Πληροφορίες <i class="fas fa-chevron-down"></i></button>
+    </div>
+    <div id="details-kepa" class="details-content">
+        <p>Ηλεκτρονική υποβολή αίτησης για εξέταση από τις υγειονομικές επιτροπές ΚΕΠΑ για κάθε είδους παροχή, σύνταξη ή κοινωνικό επίδομα.</p>
+    </div>
+
+    <div class="app-promo-card">
+        <div class="app-promo-icon"><i class="fas fa-mobile-alt"></i></div>
+        <div class="app-promo-text">
+            <div class="app-badge">ΔΩΡΟ ΓΙΑ ΤΟΥΣ ΠΕΛΑΤΕΣ ΜΑΣ</div>
+            <h2>Η δική σας ψηφιακή εφαρμογή</h2>
+            <p>Κάθε πελάτης μας αποκτά πρόσβαση σε μια προσωπική εφαρμογή όπου μπορεί να <strong>παρακολουθεί την πορεία της αίτησής του</strong> σε πραγματικό χρόνο. Δείτε όλο το ψηφιοποιημένο ασφαλιστικό σας ιστορικό, συγκεντρώστε δικαιολογητικά και στείλτε τα ηλεκτρονικά, εύκολα και γρήγορα.</p>
+        </div>
+    </div>
 
     <section id="booking" class="booking-section">
         <i class="fas fa-calendar-alt" style="font-size: 3rem; color: var(--terracotta-accent);"></i>
         <h2>Online Προγραμματισμός Ραντεβού</h2>
-        <p>Δείτε τα διαθέσιμα ραντεβού στο Google Calendar και κλείστε τη συνάντησή σας εύκολα και γρήγορα.</p>
-        <a href="https://calendar.app.google/uyssxHBnhQHURkA89" target="_blank" class="calendar-btn">
-             ΚΛΕΙΣΤΕ ΡΑΝΤΕΒΟΥ
-        </a>
+        <p>Δείτε τα διαθέσιμα ραντεβού και κλείστε τη συνάντησή σας.</p>
+        <a href="https://calendar.app.google/uyssxHBnhQHURkA89" target="_blank" class="calendar-btn">ΚΛΕΙΣΤΕ ΡΑΝΤΕΒΟΥ</a>
     </section>
 
     <section id="contact" class="contact-box">
-        <span style="color: var(--terracotta-accent); font-weight: bold; text-transform: uppercase;">Υπεύθυνος: Γκόρος Πέτρος</span>
+        <span style="color: var(--terracotta-accent); font-weight: bold;">Υπεύθυνος: Γκόρος Πέτρος</span>
         <h2>Επικοινωνία</h2>
         <span class="phone-style">2710 224 939  |  6955 316 277</span>
         <p><i class="fas fa-map-marker-alt" style="color: var(--terracotta-accent);"></i> Πατριάρχου Γρηγορίου Ε 10, Τρίπολη</p>
         <p><i class="fas fa-envelope" style="color: var(--terracotta-accent);"></i> sintaxi@taxisdp.gr</p>
-        <a href="https://maps.app.goo.gl/uczaAce8CYJKaE2r5" target="_blank" class="map-button">
-            <i class="fas fa-directions"></i> Οδηγίες στους Χάρτες
-        </a>
     </section>
-</div>
-
-<div id="ai-chat-container">
-    <div id="chat-window">
-        <div id="chat-header"><span>ΨΗΦΙΑΚΟΣ ΒΟΗΘΟΣ</span><span onclick="toggleChat()" style="cursor:pointer">×</span></div>
-        <div id="chat-body">
-            <p>Έχετε κάποια ερώτηση; Πατήστε το κουμπί για να μου τη στείλετε και θα σας απαντήσω το συντομότερο.</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSejXtVqssQgHeuX0b7tSHi181e8EHWvBAhRkyd4t5mfilvPyw/viewform?usp=header">ΓΡΑΨΤΕ ΤΗΝ ΕΡΩΤΗΣΗ</a>
-        </div>
-    </div>
-    <button id="chat-button" onclick="toggleChat()"><i class="fas fa-comment-dots"></i></button>
 </div>
 
 <footer><p>© 2026 Γκόρος Πέτρος | Διεκπεραίωση Συντάξεων</p></footer>
 
 <script>
-    function toggleChat() {
-        var win = document.getElementById('chat-window');
-        win.style.display = (win.style.display === 'block') ? 'none' : 'block';
+    function toggleSection(id, btn) {
+        var allContents = document.querySelectorAll('.details-content');
+        var allButtons = document.querySelectorAll('.toggle-btn');
+        var targetContent = document.getElementById(id);
+        var isOpening = (targetContent.style.display !== 'block');
+
+        allContents.forEach(content => content.style.display = 'none');
+        allButtons.forEach(b => {
+            const h3Text = b.parentNode.querySelector('h3').innerText;
+            if(h3Text.includes('Γήρατος') || h3Text.includes('Ηλεκτρονική')) b.innerHTML = 'Διαδικασία <i class="fas fa-chevron-down"></i>';
+            else b.innerHTML = 'Πληροφορίες <i class="fas fa-chevron-down"></i>';
+        });
+
+        if (isOpening) {
+            targetContent.style.display = 'block';
+            btn.innerHTML = 'Απόκρυψη <i class="fas fa-chevron-up"></i>';
+        }
     }
 </script>
 
