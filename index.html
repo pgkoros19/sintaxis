@@ -25,6 +25,7 @@
             background-color: var(--light-bg); 
             color: var(--text-main);
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
         /* --- Header --- */
@@ -47,11 +48,22 @@
 
         .container { max-width: 1200px; margin: auto; padding: 40px 20px; }
 
-        /* --- Titles & Descriptions --- */
-        .section-header { text-align: center; margin: 60px 0 20px; }
+        /* --- New Styled Section Titles (Frame) --- */
+        .section-header { 
+            background: var(--card-bg); 
+            border-radius: 16px; 
+            padding: 40px; 
+            margin: 80px 0 30px; 
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.05);
+            border-top: 6px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
         .section-badge { color: var(--accent); font-weight: 800; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; }
-        .section-title { font-family: 'Noto Serif Greek', serif; font-size: 2.2rem; margin: 10px 0; }
-        .section-desc { max-width: 800px; margin: 0 auto 40px; color: var(--text-muted); font-size: 1.05rem; }
+        .section-title { font-family: 'Noto Serif Greek', serif; font-size: 2.2rem; margin: 10px 0; color: var(--dark); }
+        .section-desc { max-width: 850px; margin: 0 auto; color: var(--text-muted); font-size: 1.05rem; }
 
         /* --- Grid & Card Layout --- */
         .services-grid {
@@ -88,6 +100,12 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.05); animation: fadeIn 0.3s ease;
         }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- Timeline --- */
+        .timeline { border-left: 2px solid var(--accent); margin: 20px 0 20px 20px; padding-left: 20px; }
+        .t-item { position: relative; margin-bottom: 20px; }
+        .t-item::before { content: ''; position: absolute; left: -27px; top: 5px; width: 12px; height: 12px; background: var(--accent); border-radius: 50%; }
+        .t-item h4 { margin: 0; font-size: 1rem; }
 
         /* --- Promo Boxes --- */
         .promo-box {
@@ -165,7 +183,7 @@
     <a href="#digital">Ψηφιακά</a>
     <a href="#vehicles">Μεταβιβάσεις</a>
     <a href="#booking">Ραντεβού</a>
-</nav>
+    <a href="#contact">Επικοινωνία</a> </nav>
 
 <div class="container">
     
@@ -401,8 +419,7 @@
 
 </div>
 
-<footer>
-    <p style="text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 20px;">Επικοινωνία & Τοποθεσία</p>
+<footer id="contact"> <p style="text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 20px;">Επικοινωνία & Τοποθεσία</p>
     
     <div style="margin-bottom: 30px;">
         <p><strong>Σταθερό:</strong> <a href="tel:2710224939" style="color:white; text-decoration:none;">2710 224 939</a></p>
