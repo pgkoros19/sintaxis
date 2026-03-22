@@ -10,14 +10,12 @@
     <style>
         :root { 
             --accent: #b35a44;
-            --accent-soft: rgba(179, 90, 68, 0.1);
             --dark: #1a1f24;
             --light-bg: #f8fafc;
             --card-bg: #ffffff;
             --text-main: #1e293b;
             --text-muted: #64748b;
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            --max-width: 1300px; /* Μεγαλύτερο πλάτος για desktop */
+            --transition: all 0.3s ease;
         }
         
         body { 
@@ -26,113 +24,109 @@
             background-color: var(--light-bg); 
             color: var(--text-main);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        /* --- Header & Glass Nav --- */
+        /* --- Header: Καθαρό & Επαγγελματικό --- */
         header { 
-            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover; background-position: center; background-attachment: fixed;
-            color: white; padding: 140px 20px; text-align: center;
+            background: linear-gradient(135deg, #1a1f24 0%, #2c3e50 100%);
+            color: white; 
+            padding: 80px 20px; 
+            text-align: center;
+            border-bottom: 5px solid var(--accent);
         }
-        header h1 { font-family: 'Noto Serif Greek', serif; font-size: clamp(2.5rem, 6vw, 4rem); margin: 0; text-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        
+        header h1 { font-family: 'Noto Serif Greek', serif; font-size: clamp(1.8rem, 5vw, 3rem); margin: 0; }
+        header p { font-size: 1.1rem; opacity: 0.9; margin-top: 10px; font-weight: 300; }
+
         nav { 
-            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px);
-            padding: 20px; position: sticky; top: 0; z-index: 1000; 
-            display: flex; justify-content: center; gap: 30px;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.03); border-bottom: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            padding: 15px; position: sticky; top: 0; z-index: 1000; 
+            display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
         }
-        nav a { text-decoration: none; color: var(--dark); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; transition: var(--transition); }
-        nav a:hover { color: var(--accent); transform: translateY(-1px); }
+        nav a { text-decoration: none; color: var(--dark); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        nav a:hover { color: var(--accent); }
 
-        .container { max-width: var(--max-width); margin: auto; padding: 60px 25px; }
+        .container { max-width: 1200px; margin: auto; padding: 40px 20px; }
 
-        /* --- Grid System για Desktop --- */
+        /* --- Titles --- */
+        .section-header { text-align: center; margin: 60px 0 30px; }
+        .section-badge { color: var(--accent); font-weight: 800; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; }
+        .section-title { font-family: 'Noto Serif Greek', serif; font-size: 2.2rem; margin: 10px 0; }
+
+        /* --- Grid & Card Layout --- */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
+            gap: 20px;
         }
 
-        /* --- Titles --- */
-        .section-header { text-align: center; margin-bottom: 60px; grid-column: 1 / -1; }
-        .section-badge { background: var(--accent-soft); color: var(--accent); padding: 8px 20px; border-radius: 50px; font-weight: 800; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
-        .section-title { font-family: 'Noto Serif Greek', serif; font-size: 2.8rem; margin: 20px 0; }
+        /* Η μονάδα που κρατάει κάρτα + περιεχόμενο μαζί */
+        .card-unit {
+            display: flex;
+            flex-direction: column;
+        }
 
-        /* --- Modern Cards --- */
-        .card-wrapper { position: relative; }
         .intro-card {
-            background: var(--card-bg); border-radius: 20px; padding: 35px;
+            background: var(--card-bg); border-radius: 12px; padding: 25px;
             display: flex; justify-content: space-between; align-items: center;
-            border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 40px rgba(0,0,0,0.02);
-            transition: var(--transition); cursor: pointer; height: 100%; box-sizing: border-box;
+            border-left: 5px solid var(--accent);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: var(--transition); cursor: pointer;
         }
-        .intro-card:hover { 
-            transform: translateY(-8px) scale(1.01); 
-            box-shadow: 0 20px 50px rgba(179,90,68,0.12);
-            border-color: var(--accent-soft);
-        }
+        .intro-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
         
-        .card-info h3 { margin: 0 0 10px; font-size: 1.4rem; display: flex; align-items: center; gap: 15px; }
-        .card-info h3 i { color: var(--accent); font-size: 1.3rem; }
-        .card-info p { margin: 0; color: var(--text-muted); font-size: 1.05rem; }
+        .card-info h3 { margin: 0 0 5px; font-size: 1.2rem; display: flex; align-items: center; gap: 12px; }
+        .card-info h3 i { color: var(--accent); width: 20px; }
+        .card-info p { margin: 0; color: var(--text-muted); font-size: 0.95rem; }
 
         .toggle-btn {
-            background: var(--accent); color: white; border: none; padding: 12px 22px;
-            border-radius: 12px; font-weight: 700; cursor: pointer; transition: var(--transition);
+            background: var(--accent-soft); color: var(--accent); border: 1.5px solid var(--accent); 
+            padding: 8px 15px; border-radius: 8px; font-weight: 700; font-size: 0.8rem;
         }
 
-        /* --- Expanded Content --- */
+        /* --- Περιεχόμενο που ανοίγει ΑΚΡΙΒΩΣ από κάτω --- */
         .details-content {
-            display: none; grid-column: 1 / -1; /* Πιάνει όλο το πλάτος όταν ανοίγει */
-            background: white; padding: 40px; border-radius: 20px; margin: 15px 0 40px;
-            border: 1px solid var(--accent-soft); box-shadow: inset 0 0 20px rgba(0,0,0,0.02);
-            animation: slideUp 0.5s ease forwards;
+            display: none;
+            background: white; padding: 25px; border-radius: 0 0 12px 12px;
+            border: 1px solid #eee; border-top: none;
+            margin-top: -5px; /* Κολλάει στην κάρτα */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            animation: fadeIn 0.3s ease;
         }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* --- Timeline (Alternating) --- */
-        .timeline { position: relative; max-width: 900px; margin: auto; padding: 40px 0; }
-        .timeline::after { content: ''; position: absolute; width: 4px; background: var(--accent-soft); top: 0; bottom: 0; left: 50%; margin-left: -2px; }
-        .t-item { padding: 15px 40px; position: relative; width: 50%; box-sizing: border-box; }
-        .t-item::after { content: ''; position: absolute; width: 16px; height: 16px; right: -8px; background: white; border: 4px solid var(--accent); top: 22px; border-radius: 50%; z-index: 2; }
-        .left { left: 0; text-align: right; }
-        .right { left: 50%; }
-        .right::after { left: -8px; }
-        .t-content { background: var(--light-bg); padding: 20px; border-radius: 15px; border: 1px solid #eee; }
+        /* --- Timeline --- */
+        .timeline { border-left: 2px solid var(--accent); margin: 20px 0 20px 20px; padding-left: 20px; }
+        .t-item { position: relative; margin-bottom: 20px; }
+        .t-item::before { content: ''; position: absolute; left: -27px; top: 5px; width: 12px; height: 12px; background: var(--accent); border-radius: 50%; }
+        .t-item h4 { margin: 0; font-size: 1rem; color: var(--dark); }
+        .t-item p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
 
-        /* --- App Promo (Full Width) --- */
-        .app-section {
-            grid-column: 1 / -1; background: var(--dark); color: white;
-            padding: 80px; border-radius: 40px; display: flex; align-items: center; gap: 60px;
-            margin: 80px 0; position: relative; overflow: hidden;
+        /* --- App Promo --- */
+        .app-promo {
+            background: var(--dark); color: white; padding: 40px; border-radius: 20px;
+            display: flex; align-items: center; gap: 30px; margin: 60px 0;
         }
-        .app-section i { font-size: 8rem; color: var(--accent); opacity: 0.8; }
-        .app-badge { background: var(--accent); padding: 6px 16px; border-radius: 8px; font-weight: 800; font-size: 0.8rem; margin-bottom: 20px; display: inline-block; }
+        .app-promo i { font-size: 4rem; color: var(--accent); }
+        .app-badge { background: var(--accent); padding: 4px 10px; border-radius: 5px; font-size: 0.7rem; font-weight: 800; margin-bottom: 10px; display: inline-block; }
 
-        /* --- Scroll to Top --- */
+        /* --- Back to Top --- */
         #backToTop {
-            position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
+            position: fixed; bottom: 25px; right: 25px; width: 45px; height: 45px;
             background: var(--accent); color: white; border: none; border-radius: 50%;
-            cursor: pointer; display: none; z-index: 2000; transition: 0.3s;
-            box-shadow: 0 10px 20px rgba(179,90,68,0.4);
+            cursor: pointer; display: none; z-index: 2000; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
-        #backToTop:hover { transform: scale(1.1); background: var(--dark); }
 
         /* --- Footer --- */
-        footer { background: var(--dark); color: white; padding: 100px 20px; text-align: center; margin-top: 100px; }
-        .phone-link { font-size: 2.2rem; color: var(--accent); font-weight: 800; text-decoration: none; display: block; margin: 20px 0; }
+        footer { background: var(--dark); color: white; padding: 60px 20px; text-align: center; margin-top: 80px; }
+        .phone-big { font-size: 1.8rem; color: var(--accent); font-weight: 800; display: block; margin: 15px 0; text-decoration: none; }
 
-        /* --- Responsive --- */
-        @media (max-width: 1024px) {
+        /* --- Responsive για Κινητά --- */
+        @media (max-width: 768px) {
             .services-grid { grid-template-columns: 1fr; }
-            .app-section { flex-direction: column; text-align: center; padding: 40px; }
-            .timeline::after { left: 31px; }
-            .t-item { width: 100%; padding-left: 70px; text-align: left; }
-            .t-item::after { left: 23px; }
-            .right { left: 0; }
+            .app-promo { flex-direction: column; text-align: center; }
+            header { padding: 50px 20px; }
+            .intro-card { flex-direction: column; text-align: center; gap: 15px; }
         }
     </style>
 </head>
@@ -142,7 +136,7 @@
 
 <header>
     <h1>Γκόρος Πέτρος</h1>
-    <p>Ολοκληρωμένες Λύσεις Συνταξιοδότησης & Ψηφιακής Διεκπεραίωσης</p>
+    <p>Διεκπεραίωση Συνταξιοδοτικών & Ψηφιακών Υποθέσεων</p>
 </header>
 
 <nav>
@@ -155,252 +149,239 @@
 
 <div class="container">
     
-    <div class="services-grid" id="pensions">
-        <div class="section-header">
-            <span class="section-badge">Retirement Services</span>
-            <h2 class="section-title">Συντάξεις</h2>
-            <p class="section-intro">Αναλαμβάνουμε την πλήρη διαδικασία για την έκδοση της σύνταξής σας, εξασφαλίζοντας το μέγιστο δυνατό αποτέλεσμα.</p>
-        </div>
+    <div class="section-header" id="pensions">
+        <span class="section-badge">Κοινωνική Ασφάλιση</span>
+        <h2 class="section-title">Συντάξεις</h2>
+    </div>
 
-        <div class="card-wrapper">
+    <div class="services-grid">
+        <div class="card-unit">
             <div class="intro-card" onclick="toggle('ghratos', this)">
                 <div class="card-info">
-                    <h3><i class="fas fa-briefcase"></i> Συντάξεις Γήρατος</h3>
-                    <p>Από τον έλεγχο θεμελίωσης μέχρι την απόφαση.</p>
+                    <h3><i class="fas fa-user-clock"></i> Συντάξεις Γήρατος</h3>
+                    <p>Πλήρης διαχείριση από την αίτηση έως την απόφαση.</p>
                 </div>
-                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+                <button class="toggle-btn">Διαδικασία</button>
             </div>
-        </div>
-
-        <div class="card-wrapper">
-            <div class="intro-card" onclick="toggle('ensima', this)">
-                <div class="card-info">
-                    <h3><i class="fas fa-calculator"></i> Καταμέτρηση Ενσήμων</h3>
-                    <p>Προσυνταξιοδοτική βεβαίωση & διαδοχική ασφάλιση.</p>
+            <div id="ghratos" class="details-content">
+                <div class="timeline">
+                    <div class="t-item"><h4>1. Έλεγχος Θεμελίωσης</h4><p>Εξέταση δικαιώματος και ορίων ηλικίας.</p></div>
+                    <div class="t-item"><h4>2. Σενάρια & Πλασματικά</h4><p>Ανάλυση για εξαγορές ετών ή μειωμένη σύνταξη.</p></div>
+                    <div class="t-item"><h4>3. Διαχείριση Οφειλών</h4><p>Ρυθμίσεις και συμψηφισμοί χρεών στον ΕΦΚΑ.</p></div>
+                    <div class="t-item"><h4>4. Επικαιροποίηση Στοιχείων</h4><p>Ταυτοποίηση σε ΕΦΚΑ, ΔΟΥ, Ληξιαρχείο.</p></div>
+                    <div class="t-item"><h4>5. Υπολογισμός Ποσού</h4><p>Πρόβλεψη της τελικής σύνταξης.</p></div>
+                    <div class="t-item"><h4>6. Κατάθεση & Παρακολούθηση</h4><p>Ψηφιακή υποβολή και έλεγχος πορείας.</p></div>
                 </div>
-                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
             </div>
         </div>
 
-        <div id="ghratos" class="details-content">
-            <div class="timeline">
-                <div class="t-item left"><div class="t-content"><h4>1. Δικαίωμα & Χρόνος</h4><p>Έλεγχος θεμελίωσης συνταξιοδοτικού δικαιώματος.</p></div></div>
-                <div class="t-item right"><div class="t-content"><h4>2. Σενάρια & Πλασματικά</h4><p>Ανάλυση για εξαγορές πλασματικών ετών ή μειωμένη σύνταξη.</p></div></div>
-                <div class="t-item left"><div class="t-content"><h4>3. Διαχείριση Οφειλών</h4><p>Έλεγχος χρεών στον ΕΦΚΑ, ρυθμίσεις και συμψηφισμοί.</p></div></div>
-                <div class="t-item right"><div class="t-content"><h4>4. Επικαιροποίηση Στοιχείων</h4><p>Ταυτοποίηση στοιχείων (ΕΦΚΑ, ΔΟΥ, Ληξιαρχείο).</p></div></div>
-                <div class="t-item left"><div class="t-content"><h4>5. Υπολογισμός & Κατάθεση</h4><p>Πρόβλεψη ποσού και υποβολή ψηφιακής αίτησης.</p></div></div>
-            </div>
-        </div>
-
-        <div id="ensima" class="details-content">
-            <h4>Υπηρεσίες Καταμέτρησης:</h4>
-            <ul style="color: var(--text-muted); padding-left: 20px;">
-                <li><strong>Προσυνταξιοδοτική Βεβαίωση:</strong> Επίσημο έγγραφο για τον ακριβή χρόνο ασφάλισης.</li>
-                <li><strong>Έλεγχος Διαδοχικής:</strong> Ενοποίηση χρόνων από ΙΚΑ, ΟΑΕΕ, Δημόσιο κ.α.</li>
-                <li><strong>Εντοπισμός Κενών:</strong> Συμβουλευτική για την κάλυψη ασφαλιστικών περιόδων.</li>
-            </ul>
-        </div>
-
-        <div class="card-wrapper">
+        <div class="card-unit">
             <div class="intro-card" onclick="toggle('anapiria', this)">
                 <div class="card-info">
-                    <h3><i class="fas fa-heart-pulse"></i> Συντάξεις Αναπηρίας</h3>
+                    <h3><i class="fas fa-wheelchair-move"></i> Συντάξεις Αναπηρίας</h3>
                     <p>Υποστήριξη για αιτήματα λόγω ατυχήματος ή νόσου.</p>
                 </div>
-                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+                <button class="toggle-btn">Πληροφορίες</button>
+            </div>
+            <div id="anapiria" class="details-content">
+                <p>Οργάνωση ιατρικού φακέλου, συγκέντρωση γνωματεύσεων ΚΕΠΑ και ηλεκτρονική υποβολή της αίτησης στον ασφαλιστικό φορέα.</p>
             </div>
         </div>
 
-        <div class="card-wrapper">
+        <div class="card-unit">
             <div class="intro-card" onclick="toggle('thanatos', this)">
                 <div class="card-info">
-                    <h3><i class="fas fa-obelisk"></i> Συντάξεις Θανάτου</h3>
+                    <h3><i class="fas fa-dove"></i> Συντάξεις Θανάτου</h3>
                     <p>Μεταβίβαση ή απονομή λόγω απώλειας.</p>
                 </div>
-                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+                <button class="toggle-btn">Πληροφορίες</button>
+            </div>
+            <div id="thanatos" class="details-content">
+                <p>Διεκπεραίωση για μεταβίβαση σύνταξης. Απαιτούνται ληξιαρχική πράξη θανάτου, πιστοποιητικό εγγυτέρων και βεβαιώσεις ταμείων.</p>
             </div>
         </div>
 
-        <div id="anapiria" class="details-content">
-            <p><strong>Διαδικασία:</strong> Συγκέντρωση ιατρικών γνωματεύσεων, προετοιμασία φακέλου για ΚΕΠΑ και ηλεκτρονική υποβολή αίτησης.</p>
-        </div>
-        <div id="thanatos" class="details-content">
-            <p><strong>Δικαιολογητικά:</strong> Ληξιαρχική πράξη θανάτου, πιστοποιητικό εγγυτέρων συγγενών και βεβαιώσεις ασφαλιστικών φορέων.</p>
+        <div class="card-unit">
+            <div class="intro-card" onclick="toggle('ensima', this)">
+                <div class="card-info">
+                    <h3><i class="fas fa-list-check"></i> Καταμέτρηση Ενσήμων</h3>
+                    <p>Βεβαίωση χρόνου ασφάλισης πριν την αίτηση.</p>
+                </div>
+                <button class="toggle-btn">Πληροφορίες</button>
+            </div>
+            <div id="ensima" class="details-content">
+                <ul style="color: var(--text-muted); padding-left: 20px;">
+                    <li><strong>Προσυνταξιοδοτική Βεβαίωση:</strong> Επίσημη καταμέτρηση χρόνου.</li>
+                    <li><strong>Διαδοχική Ασφάλιση:</strong> Ενοποίηση χρόνων από διαφορετικά ταμεία.</li>
+                    <li><strong>Έλεγχος Κενών:</strong> Συμβουλευτική για κάλυψη ασφαλιστικών κενών.</li>
+                </ul>
+            </div>
         </div>
     </div>
 
-    <div class="services-grid" id="benefits">
-        <div class="section-header">
-            <span class="section-badge">Social Welfare</span>
-            <h2 class="section-title">Επιδόματα</h2>
-        </div>
+    <div class="section-header" id="benefits">
+        <span class="section-badge">Πρόνοια & Βοηθήματα</span>
+        <h2 class="section-title">Επιδόματα</h2>
+    </div>
 
-        <div class="card-wrapper">
+    <div class="services-grid">
+        <div class="card-unit">
             <div class="intro-card" onclick="toggle('exo', this)">
                 <div class="card-info">
-                    <h3><i class="fas fa-wheelchair"></i> Εξωιδρυματικό Επίδομα</h3>
-                    <p>Υποστήριξη για παραπληγία & τετραπληγία.</p>
+                    <h3><i class="fas fa-hand-holding-medical"></i> Εξωιδρυματικό Επίδομα</h3>
+                    <p>Βοήθημα παραπληγίας - τετραπληγίας.</p>
                 </div>
-                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+                <button class="toggle-btn">Πληροφορίες</button>
+            </div>
+            <div id="exo" class="details-content">
+                <p>Αφορά ασφαλισμένους με συγκεκριμένες κινητικές αναπηρίες. Προετοιμασία φακέλου για τις υγειονομικές επιτροπές.</p>
             </div>
         </div>
 
-        <div class="card-wrapper">
+        <div class="card-unit">
             <div class="intro-card" onclick="toggle('opeka', this)">
                 <div class="card-info">
-                    <h3><i class="fas fa-users"></i> Ανασφάλιστοι (ΟΠΕΚΑ)</h3>
-                    <p>Βοήθημα κοινωνικής αλληλεγγύης υπερηλίκων.</p>
+                    <h3><i class="fas fa-person-cane"></i> Ανασφάλιστοι (ΟΠΕΚΑ)</h3>
+                    <p>Επίδομα κοινωνικής αλληλεγγύης υπερηλίκων.</p>
                 </div>
-                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+                <button class="toggle-btn">Πληροφορίες</button>
+            </div>
+            <div id="opeka" class="details-content">
+                <p>Έλεγχος εισοδηματικών και περιουσιακών κριτηρίων για την ένταξη στο βοήθημα του ΟΠΕΚΑ.</p>
             </div>
         </div>
 
-        <div id="exo" class="details-content">
-            <p>Αφορά ασφαλισμένους με κινητικές αναπηρίες. Περιλαμβάνει την προετοιμασία ιατρικού φακέλου και την εκπροσώπηση στις επιτροπές.</p>
-        </div>
-        <div id="opeka" class="details-content">
-            <p>Έλεγχος ηλικιακών και εισοδηματικών κριτηρίων για την ένταξη ανασφάλιστων ατόμων στο επίδομα του ΟΠΕΚΑ.</p>
-        </div>
-        
-        <div class="card-wrapper">
+        <div class="card-unit">
             <div class="intro-card" onclick="toggle('apolyto', this)">
                 <div class="card-info">
-                    <h3><i class="fas fa-hand-holding-medical"></i> Απόλυτη Αναπηρία</h3>
+                    <h3><i class="fas fa-bed-pulse"></i> Απόλυτη Αναπηρία</h3>
                     <p>Προσαύξηση σύνταξης για ανάγκη ετέρου προσώπου.</p>
                 </div>
-                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+                <button class="toggle-btn">Πληροφορίες</button>
+            </div>
+            <div id="apolyto" class="details-content">
+                <p>Αίτηση για προσαύξηση του ποσού της σύνταξης σε περιπτώσεις που απαιτείται συνεχής επίβλεψη.</p>
             </div>
         </div>
-        <div id="apolyto" class="details-content">
-            <p>Αίτηση για την προσαύξηση του ποσού της σύνταξης σε περιπτώσεις όπου ο συνταξιούχος χρήζει συνεχούς επίβλεψης.</p>
+    </div>
+
+    <div class="app-promo">
+        <i class="fas fa-mobile-screen-button"></i>
+        <div>
+            <span class="app-badge">ΑΠΟΚΛΕΙΣΤΙΚΑ ΓΙΑ ΤΟΥΣ ΠΕΛΑΤΕΣ ΜΑΣ</span>
+            <h2 style="margin: 0 0 10px 0;">Η Ψηφιακή σας Εφαρμογή</h2>
+            <p style="margin: 0; opacity: 0.9;">Κάθε πελάτης μας αποκτά πρόσβαση σε μια προσωπική εφαρμογή για να παρακολουθεί την πορεία της αίτησής του και το ασφαλιστικό του ιστορικό σε πραγματικό χρόνο.</p>
         </div>
     </div>
 
-    <div class="app-section">
-        <i class="fas fa-mobile-screen"></i>
-        <div class="app-content">
-            <span class="app-badge">EXCLUSIVELY FOR CLIENTS</span>
-            <h2>Η Ψηφιακή σας Πύλη</h2>
-            <p>Κάθε πελάτης μας αποκτά πρόσβαση στην προσωπική του εφαρμογή. Παρακολουθήστε την πορεία της αίτησής σας, δείτε το ένσημά σας και στείλτε μας δικαιολογητικά με ένα κλικ από το κινητό σας.</p>
-        </div>
+    <div class="section-header" id="vehicles">
+        <span class="section-badge">Μεταβιβάσεις Οχημάτων</span>
+        <h2 class="section-title">Οχήματα</h2>
     </div>
 
-    <div class="services-grid" id="vehicles">
-        <div class="section-header">
-            <span class="section-badge">Vehicle Transfers</span>
-            <h2 class="section-title">Μεταβιβάσεις</h2>
-        </div>
-
-        <div class="card-wrapper">
-            <div class="intro-card" onclick="toggle('trans-dig', this)">
+    <div class="services-grid">
+        <div class="card-unit">
+            <div class="intro-card" onclick="toggle('v-dig', this)">
                 <div class="card-info">
-                    <h3><i class="fas fa-bolt"></i> Ηλεκτρονική Μεταβίβαση</h3>
+                    <h3><i class="fas fa-laptop-code"></i> Ηλεκτρονική Μεταβίβαση</h3>
                     <p>Ι.Χ. Αυτοκίνητα & Μοτοσυκλέτες μέσω Gov.gr.</p>
                 </div>
-                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+                <button class="toggle-btn">Διαδικασία</button>
+            </div>
+            <div id="v-dig" class="details-content">
+                <p>Γρήγορη διαδικασία μέσω ψηφιακής πλατφόρμας. Απαιτείται κωδικός Taxisnet, ενεργό ΚΤΕΟ και εξοφλημένα τέλη κυκλοφορίας.</p>
             </div>
         </div>
 
-        <div class="card-wrapper">
-            <div class="intro-card" onclick="toggle('trans-agrot', this)">
+        <div class="card-unit">
+            <div class="intro-card" onclick="toggle('v-agr', this)">
                 <div class="card-info">
                     <h3><i class="fas fa-tractor"></i> Αγροτικά & Συμβατικά</h3>
-                    <p>Διαδικασίες μέσω Υπουργείου & βεβαιώσεις ΜΑΑΕ.</p>
+                    <p>Διεκπεραίωση μέσω Υπουργείου & βεβαιώσεις ΜΑΑΕ.</p>
                 </div>
-                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+                <button class="toggle-btn">Πληροφορίες</button>
             </div>
-        </div>
-
-        <div id="trans-dig" class="details-content">
-            <p><strong>Πλεονεκτήματα:</strong> Ταχύτητα και ασφάλεια. Απαιτείται ενεργό ΚΤΕΟ, μη παρακράτηση κυριότητας και κωδικοί Taxisnet.</p>
-        </div>
-        <div id="trans-agrot" class="details-content">
-            <p>Διεκπεραίωση για αγροτικά Φ.Ι.Χ. με έλεγχο μητρώου αγροτών και όλες τις απαραίτητες υπεύθυνες δηλώσεις.</p>
+            <div id="v-agr" class="details-content">
+                <p>Μεταβιβάσεις αγροτικών Φ.Ι.Χ. με έλεγχο μητρώου αγροτών και όλες τις απαραίτητες υπεύθυνες δηλώσεις.</p>
+            </div>
         </div>
     </div>
 
-    <div class="services-grid" id="digital">
-        <div class="section-header">
-            <span class="section-badge">Modern State</span>
-            <h2 class="section-title">Ψηφιακές Υπηρεσίες</h2>
-        </div>
+    <div class="section-header" id="digital">
+        <span class="section-badge">Ψηφιακό Κράτος</span>
+        <h2 class="section-title">Εξειδικευμένες Υπηρεσίες</h2>
+    </div>
 
-        <div class="card-wrapper">
-            <div class="intro-card" onclick="toggle('emep-card', this)">
+    <div class="services-grid">
+        <div class="card-unit">
+            <div class="intro-card" onclick="toggle('d-emep', this)">
                 <div class="card-info">
-                    <h3><i class="fas fa-id-card-clip"></i> Στοιχεία ΕΜΕΠ</h3>
+                    <h3><i class="fas fa-address-card"></i> Στοιχεία ΕΜΕΠ</h3>
                     <p>Επικαιροποίηση στοιχείων επικοινωνίας.</p>
                 </div>
-                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+                <button class="toggle-btn">Πληροφορίες</button>
+            </div>
+            <div id="d-emep" class="details-content">
+                <p>Δήλωση κινητού και email στο Εθνικό Μητρώο Επικοινωνίας για άμεση ενημέρωση από τις δημόσιες υπηρεσίες.</p>
             </div>
         </div>
 
-        <div class="card-wrapper">
-            <div class="intro-card" onclick="toggle('kepa-card', this)">
+        <div class="card-unit">
+            <div class="intro-card" onclick="toggle('d-kepa', this)">
                 <div class="card-info">
                     <h3><i class="fas fa-notes-medical"></i> Αιτήματα ΚΕΠΑ</h3>
-                    <p>Ηλεκτρονική υποβολή για επιτροπές.</p>
+                    <p>Ψηφιακή υποβολή για υγειονομικές επιτροπές.</p>
                 </div>
-                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+                <button class="toggle-btn">Πληροφορίες</button>
             </div>
-        </div>
-
-        <div id="emep-card" class="details-content">
-            <p>Δήλωση τηλεφώνου και email στο Εθνικό Μητρώο Επικοινωνίας για να λαμβάνετε έγκαιρα ειδοποιήσεις από το δημόσιο.</p>
-        </div>
-        <div id="kepa-card" class="details-content">
-            <p>Ψηφιακή κατάθεση φακέλου για πιστοποίηση αναπηρίας και παρακολούθηση της ημερομηνίας εξέτασης.</p>
+            <div id="d-kepa" class="details-content">
+                <p>Ηλεκτρονική κατάθεση φακέλου για πιστοποίηση αναπηρίας και παρακολούθηση της ημερομηνίας εξέτασης.</p>
+            </div>
         </div>
     </div>
 
-    <div class="section-header" id="booking" style="margin-top: 100px;">
-        <i class="fas fa-calendar-check" style="font-size: 4rem; color: var(--accent); margin-bottom: 20px;"></i>
-        <h2>Κλείστε το ραντεβού σας</h2>
-        <p>Επιλέξτε την ώρα που σας βολεύει και θα σας περιμένουμε στο γραφείο μας.</p>
+    <div class="section-header" id="booking" style="margin-top: 80px;">
+        <i class="fas fa-calendar-check" style="font-size: 3rem; color: var(--accent);"></i>
+        <h2>Προγραμματισμός Ραντεβού</h2>
+        <p>Κλείστε τη συνάντησή σας εύκολα και γρήγορα online.</p>
         <a href="https://calendar.app.google/uyssxHBnhQHURkA89" target="_blank" style="text-decoration: none;">
-            <button class="toggle-btn" style="padding: 20px 50px; font-size: 1.1rem; border-radius: 15px;">ΠΡΟΓΡΑΜΜΑΤΙΣΜΟΣ ONLINE</button>
+            <button class="toggle-btn" style="padding: 15px 40px; font-size: 1rem; margin-top: 20px;">ΚΛΕΙΣΤΕ ΡΑΝΤΕΒΟΥ ΕΔΩ</button>
         </a>
     </div>
 
 </div>
 
 <footer>
-    <p style="text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">Επικοινωνία</p>
-    <a href="tel:2710224939" class="phone-link">2710 224 939</a>
-    <p>Κινητό: 6955 316 277</p>
+    <p style="text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">Υπεύθυνος: Γκόρος Πέτρος</p>
+    <a href="tel:2710224939" class="phone-big">2710 224 939</a>
+    <p>Κινητό: 6955 316 277 | Email: sintaxi@taxisdp.gr</p>
     <p>Πατριάρχου Γρηγορίου Ε 10, Τρίπολη</p>
-    <p style="opacity: 0.3; margin-top: 50px; font-size: 0.8rem;">© 2026 ΠΕΤΡΟΣ ΓΚΟΡΟΣ | TAXISDP</p>
+    <p style="opacity: 0.3; margin-top: 40px; font-size: 0.8rem;">© 2026 TAXISDP | ΠΕΤΡΟΣ ΓΚΟΡΟΣ</p>
 </footer>
 
 <script>
-    // Toggle Function
-    function toggle(id, card) {
+    function toggle(id, cardElement) {
         const content = document.getElementById(id);
-        const icon = card.querySelector('.toggle-btn i');
         const isOpen = content.style.display === 'block';
 
-        // Close all
+        // Κλείσιμο όλων των άλλων
         document.querySelectorAll('.details-content').forEach(d => d.style.display = 'none');
-        document.querySelectorAll('.toggle-btn i').forEach(i => {
-            i.classList.remove('fa-minus');
-            i.classList.add('fa-plus');
-        });
+        document.querySelectorAll('.toggle-btn').forEach(b => b.innerText = b.innerText.includes('Διαδικασία') ? 'Διαδικασία' : 'Πληροφορίες');
 
         if (!isOpen) {
             content.style.display = 'block';
-            icon.classList.remove('fa-plus');
-            icon.classList.add('fa-minus');
+            cardElement.querySelector('.toggle-btn').innerText = 'Απόκρυψη';
             content.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
     }
 
-    // Back to Top Logic
-    const btt = document.getElementById("backToTop");
+    // Back to Top Button Logic
     window.onscroll = function() {
-        if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
-            btt.style.display = "block";
+        const btn = document.getElementById("backToTop");
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            btn.style.display = "block";
         } else {
-            btt.style.display = "none";
+            btn.style.display = "none";
         }
     };
 
