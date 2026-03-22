@@ -10,6 +10,7 @@
     <style>
         :root { 
             --accent: #b35a44;
+            --accent-hover: #964a38;
             --dark: #1a1f24;
             --light-bg: #f8fafc;
             --card-bg: #ffffff;
@@ -26,12 +27,10 @@
             line-height: 1.6;
         }
 
-        /* --- Header: Καθαρό & Επαγγελματικό --- */
+        /* --- Header --- */
         header { 
             background: linear-gradient(135deg, #1a1f24 0%, #2c3e50 100%);
-            color: white; 
-            padding: 80px 20px; 
-            text-align: center;
+            color: white; padding: 80px 20px; text-align: center;
             border-bottom: 5px solid var(--accent);
         }
         header h1 { font-family: 'Noto Serif Greek', serif; font-size: clamp(1.8rem, 5vw, 3rem); margin: 0; }
@@ -48,10 +47,11 @@
 
         .container { max-width: 1200px; margin: auto; padding: 40px 20px; }
 
-        /* --- Titles --- */
-        .section-header { text-align: center; margin: 60px 0 30px; }
+        /* --- Titles & Descriptions --- */
+        .section-header { text-align: center; margin: 60px 0 20px; }
         .section-badge { color: var(--accent); font-weight: 800; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; }
         .section-title { font-family: 'Noto Serif Greek', serif; font-size: 2.2rem; margin: 10px 0; }
+        .section-desc { max-width: 800px; margin: 0 auto 40px; color: var(--text-muted); font-size: 1.05rem; }
 
         /* --- Grid & Card Layout --- */
         .services-grid {
@@ -60,11 +60,7 @@
             gap: 20px;
         }
 
-        /* Η μονάδα που κρατάει κάρτα + περιεχόμενο μαζί */
-        .card-unit {
-            display: flex;
-            flex-direction: column;
-        }
+        .card-unit { display: flex; flex-direction: column; }
 
         .intro-card {
             background: var(--card-bg); border-radius: 12px; padding: 25px;
@@ -76,56 +72,80 @@
         .intro-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
         
         .card-info h3 { margin: 0 0 5px; font-size: 1.2rem; display: flex; align-items: center; gap: 12px; }
-        .card-info h3 i { color: var(--accent); width: 20px; }
+        .card-info h3 i { color: var(--accent); width: 20px; text-align: center; }
         .card-info p { margin: 0; color: var(--text-muted); font-size: 0.95rem; }
 
         .toggle-btn {
-            background: var(--accent-soft); color: var(--accent); border: 1.5px solid var(--accent); 
+            background: white; color: var(--accent); border: 1.5px solid var(--accent); 
             padding: 8px 15px; border-radius: 8px; font-weight: 700; font-size: 0.8rem;
+            cursor: pointer; transition: var(--transition);
         }
+        .toggle-btn:hover { background: var(--accent); color: white; }
 
-        /* --- Περιεχόμενο που ανοίγει ΑΚΡΙΒΩΣ από κάτω --- */
         .details-content {
-            display: none;
-            background: white; padding: 25px; border-radius: 0 0 12px 12px;
-            border: 1px solid #eee; border-top: none;
-            margin-top: -5px; /* Κολλάει στην κάρτα */
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            animation: fadeIn 0.3s ease;
+            display: none; background: white; padding: 25px; border-radius: 0 0 12px 12px;
+            border: 1px solid #eee; border-top: none; margin-top: -5px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05); animation: fadeIn 0.3s ease;
         }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* --- Timeline --- */
-        .timeline { border-left: 2px solid var(--accent); margin: 20px 0 20px 20px; padding-left: 20px; }
-        .t-item { position: relative; margin-bottom: 20px; }
-        .t-item::before { content: ''; position: absolute; left: -27px; top: 5px; width: 12px; height: 12px; background: var(--accent); border-radius: 50%; }
-        .t-item h4 { margin: 0; font-size: 1rem; color: var(--dark); }
-        .t-item p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
-
-        /* --- App Promo --- */
-        .app-promo {
-            background: var(--dark); color: white; padding: 40px; border-radius: 20px;
-            display: flex; align-items: center; gap: 30px; margin: 60px 0;
+        /* --- Promo Boxes --- */
+        .promo-box {
+            background: linear-gradient(135deg, #1a1f24 0%, #34495e 100%);
+            color: white; padding: 50px; border-radius: 24px;
+            display: flex; align-items: center; gap: 40px; margin: 60px 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
-        .app-promo i { font-size: 4rem; color: var(--accent); }
-        .app-badge { background: var(--accent); padding: 4px 10px; border-radius: 5px; font-size: 0.7rem; font-weight: 800; margin-bottom: 10px; display: inline-block; }
+        .promo-box i.main-icon { font-size: 5rem; color: var(--accent); }
+        .promo-badge { background: var(--accent); padding: 5px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 800; margin-bottom: 15px; display: inline-block; }
+        
+        .promo-btn {
+            background: var(--accent); color: white; border: none; padding: 18px 35px;
+            border-radius: 12px; font-weight: 700; font-size: 1rem; cursor: pointer;
+            text-decoration: none; display: inline-block; margin-top: 20px; transition: var(--transition);
+        }
+        .promo-btn:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(179,90,68,0.3); }
 
-        /* --- Back to Top --- */
+        /* --- Footer & Socials --- */
+        footer { background: var(--dark); color: white; padding: 80px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); }
+        .phone-big { font-size: 1.8rem; color: var(--accent); font-weight: 800; display: block; margin: 10px 0; text-decoration: none; }
+
+        .social-wrapper { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
+        .social-btn {
+            width: 45px; height: 45px; border-radius: 50%; background: #2c3e50;
+            display: flex; align-items: center; justify-content: center;
+            color: white; text-decoration: none; font-size: 1.2rem; transition: var(--transition);
+        }
+        .social-btn:hover { transform: translateY(-3px); color: white; }
+        .social-btn.fb:hover { background: #1877f2; }
+        .social-btn.ig:hover { background: #e4405f; }
+        .social-btn.vb:hover { background: #7360f2; }
+        .social-btn.map:hover { background: #34a853; }
+
+        /* --- Evaluation Box --- */
+        .eval-container {
+            background: rgba(255,255,255,0.05); backdrop-filter: blur(5px);
+            padding: 35px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);
+            margin: 40px auto; max-width: 500px;
+        }
+        .eval-stars { color: #f1c40f; font-size: 1.8rem; margin-bottom: 15px; display: block; }
+        .eval-call { color: white; font-weight: 600; font-size: 1.1rem; display: block; margin-bottom: 20px; }
+        .google-btn {
+            background: white; color: #4285F4; border: none; padding: 12px 25px;
+            border-radius: 8px; font-weight: 800; font-size: 0.9rem; text-decoration: none;
+            display: inline-flex; align-items: center; gap: 10px; transition: var(--transition);
+        }
+        .google-btn:hover { background: #f1f1f1; transform: scale(1.05); }
+
         #backToTop {
             position: fixed; bottom: 25px; right: 25px; width: 45px; height: 45px;
             background: var(--accent); color: white; border: none; border-radius: 50%;
             cursor: pointer; display: none; z-index: 2000; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        /* --- Footer --- */
-        footer { background: var(--dark); color: white; padding: 60px 20px; text-align: center; margin-top: 80px; }
-        .phone-big { font-size: 1.8rem; color: var(--accent); font-weight: 800; display: block; margin: 15px 0; text-decoration: none; }
-
-        /* --- Responsive για Κινητά --- */
         @media (max-width: 768px) {
             .services-grid { grid-template-columns: 1fr; }
-            .app-promo { flex-direction: column; text-align: center; }
-            header { padding: 50px 20px; }
+            .promo-box { flex-direction: column; text-align: center; padding: 30px; }
             .intro-card { flex-direction: column; text-align: center; gap: 15px; }
         }
     </style>
@@ -142,8 +162,8 @@
 <nav>
     <a href="#pensions">Συντάξεις</a>
     <a href="#benefits">Επιδόματα</a>
-    <a href="#vehicles">Μεταβιβάσεις</a>
     <a href="#digital">Ψηφιακά</a>
+    <a href="#vehicles">Μεταβιβάσεις</a>
     <a href="#booking">Ραντεβού</a>
 </nav>
 
@@ -152,6 +172,7 @@
     <div class="section-header" id="pensions">
         <span class="section-badge">Κοινωνική Ασφάλιση</span>
         <h2 class="section-title">Συντάξεις</h2>
+        <p class="section-desc">Εξυπηρετούμε όλα τα ασφαλιστικά ταμεία (<strong>ΟΓΑ, ΙΚΑ, ΟΑΕΕ, ΕΦΚΑ, ΔΗΜΟΣΙΟ</strong>), αναλαμβάνοντας πλήρως τη διαδικασία για την έκδοση της σύνταξής σας.</p>
     </div>
 
     <div class="services-grid">
@@ -191,7 +212,7 @@
         <div class="card-unit">
             <div class="intro-card" onclick="toggle('thanatos', this)">
                 <div class="card-info">
-                    <h3><i class="fas fa-dove"></i> Συντάξεις Θανάτου</h3>
+                    <h3><i class="fas fa-heart-crack"></i> Συντάξεις Θανάτου</h3>
                     <p>Μεταβίβαση ή απονομή λόγω απώλειας.</p>
                 </div>
                 <button class="toggle-btn">Πληροφορίες</button>
@@ -213,7 +234,6 @@
                 <ul style="color: var(--text-muted); padding-left: 20px;">
                     <li><strong>Προσυνταξιοδοτική Βεβαίωση:</strong> Επίσημη καταμέτρηση χρόνου.</li>
                     <li><strong>Διαδοχική Ασφάλιση:</strong> Ενοποίηση χρόνων από διαφορετικά ταμεία.</li>
-                    <li><strong>Έλεγχος Κενών:</strong> Συμβουλευτική για κάλυψη ασφαλιστικών κενών.</li>
                 </ul>
             </div>
         </div>
@@ -222,6 +242,7 @@
     <div class="section-header" id="benefits">
         <span class="section-badge">Πρόνοια & Βοηθήματα</span>
         <h2 class="section-title">Επιδόματα</h2>
+        <p class="section-desc">Αξιολογούμε την περίπτωσή σας και σας βοηθάμε να λάβετε το επίδομα που δικαιούστε, χωρίς κόπο και καθυστερήσεις.</p>
     </div>
 
     <div class="services-grid">
@@ -265,18 +286,79 @@
         </div>
     </div>
 
-    <div class="app-promo">
-        <i class="fas fa-mobile-screen-button"></i>
+    <div class="promo-box">
+        <i class="fas fa-mobile-screen-button main-icon"></i>
         <div>
-            <span class="app-badge">ΑΠΟΚΛΕΙΣΤΙΚΑ ΓΙΑ ΤΟΥΣ ΠΕΛΑΤΕΣ ΜΑΣ</span>
+            <span class="promo-badge">ΑΠΟΚΛΕΙΣΤΙΚΑ ΓΙΑ ΤΟΥΣ ΠΕΛΑΤΕΣ ΜΑΣ</span>
             <h2 style="margin: 0 0 10px 0;">Η Ψηφιακή σας Εφαρμογή</h2>
             <p style="margin: 0; opacity: 0.9;">Κάθε πελάτης μας αποκτά πρόσβαση σε μια προσωπική εφαρμογή για να παρακολουθεί την πορεία της αίτησής του και το ασφαλιστικό του ιστορικό σε πραγματικό χρόνο.</p>
+        </div>
+    </div>
+
+    <div class="section-header" id="digital">
+        <span class="section-badge">Ψηφιακό Κράτος</span>
+        <h2 class="section-title">Εξειδικευμένες Υπηρεσίες</h2>
+        <p class="section-desc">Διεκπεραιώνουμε τις ψηφιακές σας υποθέσεις στο Gov.gr άμεσα, με ασφάλεια και χωρίς ταλαιπωρία.</p>
+    </div>
+
+    <div class="services-grid">
+        <div class="card-unit">
+            <div class="intro-card" onclick="toggle('d-emep', this)">
+                <div class="card-info">
+                    <h3><i class="fas fa-address-card"></i> Στοιχεία ΕΜΕΠ</h3>
+                    <p>Επικαιροποίηση στοιχείων επικοινωνίας.</p>
+                </div>
+                <button class="toggle-btn">Πληροφορίες</button>
+            </div>
+            <div id="d-emep" class="details-content">
+                <p>Δήλωση κινητού και email στο Εθνικό Μητρώο Επικοινωνίας για άμεση ενημέρωση από τις δημόσιες υπηρεσίες.</p>
+            </div>
+        </div>
+
+        <div class="card-unit">
+            <div class="intro-card" onclick="toggle('d-kepa', this)">
+                <div class="card-info">
+                    <h3><i class="fas fa-notes-medical"></i> Αιτήματα ΚΕΠΑ</h3>
+                    <p>Ψηφιακή υποβολή για υγειονομικές επιτροπές.</p>
+                </div>
+                <button class="toggle-btn">Πληροφορίες</button>
+            </div>
+            <div id="d-kepa" class="details-content">
+                <p>Ηλεκτρονική κατάθεση φακέλου για πιστοποίηση αναπηρίας και παρακολούθηση της ημερομηνίας εξέτασης.</p>
+            </div>
+        </div>
+
+        <div class="card-unit">
+            <div class="intro-card" onclick="toggle('d-yd', this)">
+                <div class="card-info">
+                    <h3><i class="fas fa-file-signature"></i> Υπεύθυνες Δηλώσεις</h3>
+                    <p>Έκδοση ψηφιακής δήλωσης μέσω Gov.gr.</p>
+                </div>
+                <button class="toggle-btn">Πληροφορίες</button>
+            </div>
+            <div id="d-yd" class="details-content">
+                <p>Σύνταξη και ηλεκτρονική υπογραφή υπεύθυνης δήλωσης για κάθε νόμιμη χρήση, άμεσα και έγκυρα.</p>
+            </div>
+        </div>
+
+        <div class="card-unit">
+            <div class="intro-card" onclick="toggle('d-ex', this)">
+                <div class="card-info">
+                    <h3><i class="fas fa-handshake"></i> Εξουσιοδοτήσεις</h3>
+                    <p>Ψηφιακή εξουσιοδότηση προσώπων.</p>
+                </div>
+                <button class="toggle-btn">Πληροφορίες</button>
+            </div>
+            <div id="d-ex" class="details-content">
+                <p>Δημιουργία ψηφιακής εξουσιοδότησης για τη διεκπεραίωση υποθέσεων από τρίτα πρόσωπα χωρίς επίσκεψη σε ΚΕΠ.</p>
+            </div>
         </div>
     </div>
 
     <div class="section-header" id="vehicles">
         <span class="section-badge">Μεταβιβάσεις Οχημάτων</span>
         <h2 class="section-title">Οχήματα</h2>
+        <p class="section-desc">Η μεταβίβαση ολοκληρώνεται ηλεκτρονικά στον χώρο μας σε <strong>μόλις 20 λεπτά</strong>. Αγοραστής και πωλητής τελειώνουν άμεσα, χωρίς γραφειοκρατία, χρησιμοποιώντας μόνο το κινητό τους.</p>
     </div>
 
     <div class="services-grid">
@@ -307,55 +389,45 @@
         </div>
     </div>
 
-    <div class="section-header" id="digital">
-        <span class="section-badge">Ψηφιακό Κράτος</span>
-        <h2 class="section-title">Εξειδικευμένες Υπηρεσίες</h2>
-    </div>
-
-    <div class="services-grid">
-        <div class="card-unit">
-            <div class="intro-card" onclick="toggle('d-emep', this)">
-                <div class="card-info">
-                    <h3><i class="fas fa-address-card"></i> Στοιχεία ΕΜΕΠ</h3>
-                    <p>Επικαιροποίηση στοιχείων επικοινωνίας.</p>
-                </div>
-                <button class="toggle-btn">Πληροφορίες</button>
-            </div>
-            <div id="d-emep" class="details-content">
-                <p>Δήλωση κινητού και email στο Εθνικό Μητρώο Επικοινωνίας για άμεση ενημέρωση από τις δημόσιες υπηρεσίες.</p>
-            </div>
+    <div class="promo-box" id="booking" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);">
+        <i class="fas fa-calendar-check main-icon"></i>
+        <div>
+            <span class="promo-badge" style="background: #2563eb;">ONLINE ΠΡΟΓΡΑΜΜΑΤΙΣΜΟΣ</span>
+            <h2 style="margin: 0 0 10px 0;">Κλείστε το ραντεβού σας</h2>
+            <p style="margin: 0; opacity: 0.9;">Επιλέξτε την ημέρα και την ώρα που σας εξυπηρετεί για μια κατ' ιδίαν συνάντηση στο γραφείο μας.</p>
+            <a href="https://calendar.app.google/uyssxHBnhQHURkA89" target="_blank" class="promo-btn">ΠΡΟΓΡΑΜΜΑΤΙΣΜΟΣ ΡΑΝΤΕΒΟΥ</a>
         </div>
-
-        <div class="card-unit">
-            <div class="intro-card" onclick="toggle('d-kepa', this)">
-                <div class="card-info">
-                    <h3><i class="fas fa-notes-medical"></i> Αιτήματα ΚΕΠΑ</h3>
-                    <p>Ψηφιακή υποβολή για υγειονομικές επιτροπές.</p>
-                </div>
-                <button class="toggle-btn">Πληροφορίες</button>
-            </div>
-            <div id="d-kepa" class="details-content">
-                <p>Ηλεκτρονική κατάθεση φακέλου για πιστοποίηση αναπηρίας και παρακολούθηση της ημερομηνίας εξέτασης.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="section-header" id="booking" style="margin-top: 80px;">
-        <i class="fas fa-calendar-check" style="font-size: 3rem; color: var(--accent);"></i>
-        <h2>Προγραμματισμός Ραντεβού</h2>
-        <p>Κλείστε τη συνάντησή σας εύκολα και γρήγορα online.</p>
-        <a href="https://calendar.app.google/uyssxHBnhQHURkA89" target="_blank" style="text-decoration: none;">
-            <button class="toggle-btn" style="padding: 15px 40px; font-size: 1rem; margin-top: 20px;">ΚΛΕΙΣΤΕ ΡΑΝΤΕΒΟΥ ΕΔΩ</button>
-        </a>
     </div>
 
 </div>
 
 <footer>
-    <p style="text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">Υπεύθυνος: Γκόρος Πέτρος</p>
-    <a href="tel:2710224939" class="phone-big">2710 224 939</a>
-    <p>Κινητό: 6955 316 277 | Email: sintaxi@taxisdp.gr</p>
-    <p>Πατριάρχου Γρηγορίου Ε 10, Τρίπολη</p>
+    <p style="text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 20px;">Επικοινωνία & Τοποθεσία</p>
+    
+    <div style="margin-bottom: 30px;">
+        <p><strong>Σταθερό:</strong> <a href="tel:2710224939" style="color:white; text-decoration:none;">2710 224 939</a></p>
+        <p><strong>Κινητό:</strong> <a href="tel:6955316277" style="color:white; text-decoration:none;">6955 316 277</a></p>
+        <p><strong>Email:</strong> <a href="mailto:sintaxi@taxisdp.gr" style="color:var(--accent); text-decoration:none; font-weight:bold;">sintaxi@taxisdp.gr</a></p>
+        <p>Πατριάρχου Γρηγορίου Ε 10, Τρίπολη</p>
+    </div>
+
+    <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px;">
+        <div class="eval-container">
+            <span class="eval-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+            <span class="eval-call">Η γνώμη σας μετράει! Αξιολογήστε μας στην Google:</span>
+            <a href="https://g.page/r/CV_n33h4nE4jEAE/review" target="_blank" class="google-btn">
+                <i class="fab fa-google"></i> ΠΡΟΣΘΗΚΗ ΑΞΙΟΛΟΓΗΣΗΣ
+            </a>
+        </div>
+        
+        <div class="social-wrapper">
+            <a href="https://www.facebook.com/TaxisDP" target="_blank" class="social-btn fb" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/taxisdp" target="_blank" class="social-btn ig" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="viber://chat?number=+306955316277" class="social-btn vb" title="Viber"><i class="fab fa-viber"></i></a>
+            <a href="https://maps.app.goo.gl/RFinZCzvcyNpMkmj7" target="_blank" class="social-btn map" title="Google Maps"><i class="fas fa-map-marked-alt"></i></a>
+        </div>
+    </div>
+
     <p style="opacity: 0.3; margin-top: 40px; font-size: 0.8rem;">© 2026 TAXISDP | ΠΕΤΡΟΣ ΓΚΟΡΟΣ</p>
 </footer>
 
@@ -364,9 +436,13 @@
         const content = document.getElementById(id);
         const isOpen = content.style.display === 'block';
 
-        // Κλείσιμο όλων των άλλων
         document.querySelectorAll('.details-content').forEach(d => d.style.display = 'none');
-        document.querySelectorAll('.toggle-btn').forEach(b => b.innerText = b.innerText.includes('Διαδικασία') ? 'Διαδικασία' : 'Πληροφορίες');
+        document.querySelectorAll('.toggle-btn').forEach(b => {
+            if(b.innerText === 'Απόκρυψη') {
+                const title = b.closest('.card-unit').querySelector('.card-info h3').innerText;
+                b.innerText = (title.includes('Γήρατος') || title.includes('Μεταβίβαση')) ? 'Διαδικασία' : 'Πληροφορίες';
+            }
+        });
 
         if (!isOpen) {
             content.style.display = 'block';
@@ -375,7 +451,6 @@
         }
     }
 
-    // Back to Top Button Logic
     window.onscroll = function() {
         const btn = document.getElementById("backToTop");
         if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
