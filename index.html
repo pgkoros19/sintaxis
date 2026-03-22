@@ -4,384 +4,408 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Διεκπεραίωση Συνταξιοδοτικών Υποθέσεων | Γκόρος Πέτρος</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Devenagari:wght@400;700&family=Noto+Serif+Greek:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Greek:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root { 
-            --stone-grey: #e8e8e8;
-            --deep-charcoal: #222222;
-            --terracotta-accent: #b35a44;
-            --paper-white: #ffffff;
-            --light-bg: #f9f9f9;
+            --accent: #b35a44;
+            --accent-soft: rgba(179, 90, 68, 0.1);
+            --dark: #1a1f24;
+            --light-bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --max-width: 1300px; /* Μεγαλύτερο πλάτος για desktop */
         }
         
         body { 
             font-family: 'Inter', sans-serif; 
             margin: 0; 
-            color: var(--deep-charcoal); 
-            background-color: var(--paper-white); 
-            line-height: 1.8; 
-            scroll-behavior: smooth; 
+            background-color: var(--light-bg); 
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-        
-        h1, h2, h3 { font-family: 'Noto Serif Greek', serif; letter-spacing: -0.5px; font-weight: 700; }
 
+        /* --- Header & Glass Nav --- */
         header { 
-            background: var(--deep-charcoal); 
-            color: var(--paper-white); 
-            padding: 5rem 1rem; 
-            text-align: center; 
-            border-bottom: 6px solid var(--terracotta-accent);
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover; background-position: center; background-attachment: fixed;
+            color: white; padding: 140px 20px; text-align: center;
         }
-        header h1 { margin: 0; font-size: clamp(1.8rem, 5vw, 2.8rem); }
-        header p { font-family: 'Inter', sans-serif; font-weight: 300; font-size: 1.1rem; margin-top: 15px; opacity: 0.8; }
+        header h1 { font-family: 'Noto Serif Greek', serif; font-size: clamp(2.5rem, 6vw, 4rem); margin: 0; text-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         
         nav { 
-            background: rgba(255,255,255,0.98); 
-            padding: 1.2rem; 
-            text-align: center; 
-            position: sticky; 
-            top: 0; 
-            z-index: 1000; 
-            box-shadow: 0 2px 15px rgba(0,0,0,0.04); 
-            border-bottom: 1px solid #eee;
+            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px);
+            padding: 20px; position: sticky; top: 0; z-index: 1000; 
+            display: flex; justify-content: center; gap: 30px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.03); border-bottom: 1px solid rgba(255,255,255,0.3);
         }
-        nav a { margin: 0 18px; text-decoration: none; color: var(--deep-charcoal); font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; transition: 0.3s; }
-        nav a:hover { color: var(--terracotta-accent); }
+        nav a { text-decoration: none; color: var(--dark); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; transition: var(--transition); }
+        nav a:hover { color: var(--accent); transform: translateY(-1px); }
 
-        .container { max-width: 1100px; margin: auto; padding: 2rem; }
+        .container { max-width: var(--max-width); margin: auto; padding: 60px 25px; }
 
-        .section-group-title { 
-            text-align: center; 
-            text-transform: uppercase; 
-            letter-spacing: 3px; 
-            color: var(--terracotta-accent); 
-            margin-top: 6rem;
-            font-size: 1rem;
-            font-weight: 700;
+        /* --- Grid System για Desktop --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
         }
 
-        .section-title { text-align: center; color: var(--deep-charcoal); margin-top: 1rem; margin-bottom: 1rem; font-size: 2.2rem; }
-        .section-intro { text-align: center; max-width: 800px; margin: 0 auto 3rem auto; color: #666; font-size: 1.1rem; }
+        /* --- Titles --- */
+        .section-header { text-align: center; margin-bottom: 60px; grid-column: 1 / -1; }
+        .section-badge { background: var(--accent-soft); color: var(--accent); padding: 8px 20px; border-radius: 50px; font-weight: 800; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
+        .section-title { font-family: 'Noto Serif Greek', serif; font-size: 2.8rem; margin: 20px 0; }
 
+        /* --- Modern Cards --- */
+        .card-wrapper { position: relative; }
         .intro-card {
-            background: var(--light-bg);
-            border-left: 5px solid var(--terracotta-accent);
-            padding: 2rem;
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            gap: 20px;
+            background: var(--card-bg); border-radius: 20px; padding: 35px;
+            display: flex; justify-content: space-between; align-items: center;
+            border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 40px rgba(0,0,0,0.02);
+            transition: var(--transition); cursor: pointer; height: 100%; box-sizing: border-box;
         }
-        .intro-text { flex: 1; }
-        .intro-text h3 { margin: 0 0 10px 0; color: var(--deep-charcoal); }
-        .intro-text p { margin: 0; font-size: 0.95rem; color: #555; }
+        .intro-card:hover { 
+            transform: translateY(-8px) scale(1.01); 
+            box-shadow: 0 20px 50px rgba(179,90,68,0.12);
+            border-color: var(--accent-soft);
+        }
+        
+        .card-info h3 { margin: 0 0 10px; font-size: 1.4rem; display: flex; align-items: center; gap: 15px; }
+        .card-info h3 i { color: var(--accent); font-size: 1.3rem; }
+        .card-info p { margin: 0; color: var(--text-muted); font-size: 1.05rem; }
 
         .toggle-btn {
-            background: none;
-            border: 2px solid var(--terracotta-accent);
-            color: var(--terracotta-accent);
-            padding: 10px 20px;
-            font-weight: 700;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: 0.3s;
-            white-space: nowrap;
-            font-size: 0.8rem;
+            background: var(--accent); color: white; border: none; padding: 12px 22px;
+            border-radius: 12px; font-weight: 700; cursor: pointer; transition: var(--transition);
         }
-        .toggle-btn:hover { background: var(--terracotta-accent); color: white; }
 
+        /* --- Expanded Content --- */
         .details-content {
-            display: none;
-            padding: 2rem;
-            background: #fff;
-            border: 1px solid #eee;
-            margin-bottom: 2rem;
-            animation: fadeIn 0.4s ease;
+            display: none; grid-column: 1 / -1; /* Πιάνει όλο το πλάτος όταν ανοίγει */
+            background: white; padding: 40px; border-radius: 20px; margin: 15px 0 40px;
+            border: 1px solid var(--accent-soft); box-shadow: inset 0 0 20px rgba(0,0,0,0.02);
+            animation: slideUp 0.5s ease forwards;
         }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        /* Timeline */
-        .timeline { position: relative; max-width: 800px; margin: 0 auto; padding: 20px 0; }
-        .timeline::after { content: ''; position: absolute; width: 2px; background: var(--stone-grey); top: 0; bottom: 0; left: 50%; margin-left: -1px; }
-        .timeline-item { padding: 10px 40px; position: relative; width: 50%; box-sizing: border-box; }
-        .timeline-item::after { content: ''; position: absolute; width: 12px; height: 12px; right: -6px; background-color: white; border: 2px solid var(--terracotta-accent); top: 18px; border-radius: 50%; z-index: 1; }
+        /* --- Timeline (Alternating) --- */
+        .timeline { position: relative; max-width: 900px; margin: auto; padding: 40px 0; }
+        .timeline::after { content: ''; position: absolute; width: 4px; background: var(--accent-soft); top: 0; bottom: 0; left: 50%; margin-left: -2px; }
+        .t-item { padding: 15px 40px; position: relative; width: 50%; box-sizing: border-box; }
+        .t-item::after { content: ''; position: absolute; width: 16px; height: 16px; right: -8px; background: white; border: 4px solid var(--accent); top: 22px; border-radius: 50%; z-index: 2; }
         .left { left: 0; text-align: right; }
         .right { left: 50%; }
-        .right::after { left: -6px; }
-        .timeline-content h3 { color: var(--terracotta-accent); font-size: 1rem; margin: 0; }
-        .timeline-content p { font-size: 0.9rem; margin: 5px 0 0 0; }
+        .right::after { left: -8px; }
+        .t-content { background: var(--light-bg); padding: 20px; border-radius: 15px; border: 1px solid #eee; }
 
-        ul.details-list { font-size: 0.95rem; color: #555; padding-left: 20px; margin-top: 10px; }
-        ul.details-list li { margin-bottom: 8px; }
-
-        /* App Promo Section */
-        .app-promo-card {
-            background: linear-gradient(135deg, var(--deep-charcoal) 0%, #3a3a3a 100%);
-            color: white;
-            padding: 3rem;
-            border-radius: 4px;
-            margin: 5rem 0;
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        /* --- App Promo (Full Width) --- */
+        .app-section {
+            grid-column: 1 / -1; background: var(--dark); color: white;
+            padding: 80px; border-radius: 40px; display: flex; align-items: center; gap: 60px;
+            margin: 80px 0; position: relative; overflow: hidden;
         }
-        .app-promo-icon { font-size: 4rem; color: var(--terracotta-accent); }
-        .app-promo-text h2 { margin-top: 0; color: white; }
-        .app-promo-text p { opacity: 0.9; font-size: 1.1rem; }
-        .app-badge { display: inline-block; background: var(--terracotta-accent); padding: 5px 12px; font-size: 0.75rem; font-weight: 700; border-radius: 3px; margin-bottom: 10px; }
+        .app-section i { font-size: 8rem; color: var(--accent); opacity: 0.8; }
+        .app-badge { background: var(--accent); padding: 6px 16px; border-radius: 8px; font-weight: 800; font-size: 0.8rem; margin-bottom: 20px; display: inline-block; }
 
-        .booking-section { background: #fafafa; padding: 5rem 2rem; text-align: center; border: 1px solid #eee; margin-top: 5rem; }
-        .calendar-btn { display: inline-block; background: var(--terracotta-accent); color: white !important; padding: 22px 45px; text-decoration: none; font-weight: 700; text-transform: uppercase; margin-top: 30px; transition: 0.3s; }
-        .calendar-btn:hover { background: var(--deep-charcoal); }
+        /* --- Scroll to Top --- */
+        #backToTop {
+            position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
+            background: var(--accent); color: white; border: none; border-radius: 50%;
+            cursor: pointer; display: none; z-index: 2000; transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(179,90,68,0.4);
+        }
+        #backToTop:hover { transform: scale(1.1); background: var(--dark); }
 
-        .contact-box { background: var(--deep-charcoal); color: white; padding: 5rem 2rem; text-align: center; margin-top: 5rem; }
-        .phone-style { font-size: 1.5rem; letter-spacing: 2px; color: var(--terracotta-accent); font-weight: 700; margin: 15px 0; display: block; }
+        /* --- Footer --- */
+        footer { background: var(--dark); color: white; padding: 100px 20px; text-align: center; margin-top: 100px; }
+        .phone-link { font-size: 2.2rem; color: var(--accent); font-weight: 800; text-decoration: none; display: block; margin: 20px 0; }
 
-        @media screen and (max-width: 768px) {
-            .intro-card { flex-direction: column; text-align: center; }
-            .app-promo-card { flex-direction: column; text-align: center; padding: 2rem; }
+        /* --- Responsive --- */
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: 1fr; }
+            .app-section { flex-direction: column; text-align: center; padding: 40px; }
             .timeline::after { left: 31px; }
-            .timeline-item { width: 100%; padding-left: 70px; text-align: left; }
-            .timeline-item::after { left: 25px; }
-            .right { left: 0%; }
+            .t-item { width: 100%; padding-left: 70px; text-align: left; }
+            .t-item::after { left: 23px; }
+            .right { left: 0; }
         }
     </style>
 </head>
 <body>
 
+<button id="backToTop" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
+
 <header>
-    <h1>Διεκπεραίωση Συνταξιοδοτικών Υποθέσεων</h1>
-    <p>Γκόρος Πέτρος | Πατριάρχου Γρηγορίου Ε 10, Τρίπολη</p>
+    <h1>Γκόρος Πέτρος</h1>
+    <p>Ολοκληρωμένες Λύσεις Συνταξιοδότησης & Ψηφιακής Διεκπεραίωσης</p>
 </header>
 
 <nav>
     <a href="#pensions">Συντάξεις</a>
     <a href="#benefits">Επιδόματα</a>
     <a href="#vehicles">Μεταβιβάσεις</a>
-    <a href="#other">Υπηρεσίες</a>
+    <a href="#digital">Ψηφιακά</a>
     <a href="#booking">Ραντεβού</a>
 </nav>
 
 <div class="container">
     
-    <div class="section-group-title" id="pensions">Υπηρεσίες Συνταξιοδότησης</div>
-    <h2 class="section-title">Συντάξεις</h2>
-    <p class="section-intro">Πλήρης υποστήριξη για την έκδοση κάθε είδους σύνταξης, με εξειδικευμένο έλεγχο οφειλών και καταμέτρηση χρόνου ασφάλισης.</p>
-
-    <div class="intro-card">
-        <div class="intro-text">
-            <h3>Συντάξεις Γήρατος</h3>
-            <p>Πλήρης διαχείριση της αίτησής σας, από τη θεμελίωση έως την τελική απόφαση.</p>
+    <div class="services-grid" id="pensions">
+        <div class="section-header">
+            <span class="section-badge">Retirement Services</span>
+            <h2 class="section-title">Συντάξεις</h2>
+            <p class="section-intro">Αναλαμβάνουμε την πλήρη διαδικασία για την έκδοση της σύνταξής σας, εξασφαλίζοντας το μέγιστο δυνατό αποτέλεσμα.</p>
         </div>
-        <button class="toggle-btn" onclick="toggleSection('details-ghratos', this)">Διαδικασία <i class="fas fa-chevron-down"></i></button>
-    </div>
-    <div id="details-ghratos" class="details-content">
-        <div class="timeline">
-            <div class="timeline-item left"><div class="timeline-content"><h3>1. Δικαίωμα & Χρόνος</h3><p>Έλεγχος θεμελίωσης συνταξιοδοτικού δικαιώματος.</p></div></div>
-            <div class="timeline-item right"><div class="timeline-content"><h3>2. Σύγκριση Σεναρίων</h3><p>Ανάλυση για εξαγορές πλασματικών ετών ή μειωμένη σύνταξη.</p></div></div>
-            <div class="timeline-item left"><div class="timeline-content"><h3>3. Διαχείριση Οφειλών</h3><p>Έλεγχος χρεών στον ΕΦΚΑ, ρυθμίσεις και συμψηφισμοί για την απεμπλοκή της σύνταξης.</p></div></div>
-            <div class="timeline-item right"><div class="timeline-content"><h3>4. Επικαιροποίηση Στοιχείων</h3><p>Έλεγχος και ταυτοποίηση στοιχείων (ΕΦΚΑ, ΔΟΥ, Ληξιαρχείο).</p></div></div>
-            <div class="timeline-item left"><div class="timeline-content"><h3>5. Υπολογισμός Ποσού</h3><p>Πρόβλεψη του τελικού ποσού της σύνταξης.</p></div></div>
-            <div class="timeline-item right"><div class="timeline-content"><h3>6. Κατάθεση & Παρακολούθηση</h3><p>Υποβολή ηλεκτρονικής αίτησης και έλεγχος της πορείας της.</p></div></div>
+
+        <div class="card-wrapper">
+            <div class="intro-card" onclick="toggle('ghratos', this)">
+                <div class="card-info">
+                    <h3><i class="fas fa-briefcase"></i> Συντάξεις Γήρατος</h3>
+                    <p>Από τον έλεγχο θεμελίωσης μέχρι την απόφαση.</p>
+                </div>
+                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+            </div>
         </div>
-    </div>
 
-    <div class="intro-card">
-        <div class="intro-text">
-            <h3>Συντάξεις Αναπηρίας</h3>
-            <p>Εξειδικευμένη υποστήριξη για αιτήματα λόγω ατυχήματος ή νόσου.</p>
+        <div class="card-wrapper">
+            <div class="intro-card" onclick="toggle('ensima', this)">
+                <div class="card-info">
+                    <h3><i class="fas fa-calculator"></i> Καταμέτρηση Ενσήμων</h3>
+                    <p>Προσυνταξιοδοτική βεβαίωση & διαδοχική ασφάλιση.</p>
+                </div>
+                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+            </div>
         </div>
-        <button class="toggle-btn" onclick="toggleSection('details-anapiria', this)">Πληροφορίες <i class="fas fa-chevron-down"></i></button>
-    </div>
-    <div id="details-anapiria" class="details-content">
-        <p>Αναλαμβάνουμε τον <strong>έλεγχο προϋποθέσεων</strong> και τη συγκέντρωση όλων των απαραίτητων εγγράφων:</p>
-        <ul class="details-list">
-            <li>Γνωματεύσεις <strong>ΚΕΠΑ</strong> και ιατρικές βεβαιώσεις.</li>
-            <li>Πιστοποιητικά και επίσημα έγγραφα ασφαλιστικών φορέων.</li>
-            <li>Πλήρης οργάνωση ιατρικού και ασφαλιστικού φακέλου για την επιτροπή.</li>
-        </ul>
-    </div>
 
-    <div class="intro-card">
-        <div class="intro-text">
-            <h3>Συντάξεις Θανάτου</h3>
-            <p>Άμεση μεταβίβαση ή απονομή σύνταξης σε περιπτώσεις απώλειας.</p>
+        <div id="ghratos" class="details-content">
+            <div class="timeline">
+                <div class="t-item left"><div class="t-content"><h4>1. Δικαίωμα & Χρόνος</h4><p>Έλεγχος θεμελίωσης συνταξιοδοτικού δικαιώματος.</p></div></div>
+                <div class="t-item right"><div class="t-content"><h4>2. Σενάρια & Πλασματικά</h4><p>Ανάλυση για εξαγορές πλασματικών ετών ή μειωμένη σύνταξη.</p></div></div>
+                <div class="t-item left"><div class="t-content"><h4>3. Διαχείριση Οφειλών</h4><p>Έλεγχος χρεών στον ΕΦΚΑ, ρυθμίσεις και συμψηφισμοί.</p></div></div>
+                <div class="t-item right"><div class="t-content"><h4>4. Επικαιροποίηση Στοιχείων</h4><p>Ταυτοποίηση στοιχείων (ΕΦΚΑ, ΔΟΥ, Ληξιαρχείο).</p></div></div>
+                <div class="t-item left"><div class="t-content"><h4>5. Υπολογισμός & Κατάθεση</h4><p>Πρόβλεψη ποσού και υποβολή ψηφιακής αίτησης.</p></div></div>
+            </div>
         </div>
-        <button class="toggle-btn" onclick="toggleSection('details-thanatos', this)">Πληροφορίες <i class="fas fa-chevron-down"></i></button>
-    </div>
-    <div id="details-thanatos" class="details-content">
-        <p>Διεκπεραιώνουμε τον <strong>έλεγχο προϋποθέσεων</strong> για τη μεταβίβαση σε περίπτωση θανάτου συνταξιούχου ή την απονομή λόγω θανάτου ασφαλισμένου:</p>
-        <ul class="details-list">
-            <li><strong>Ληξιαρχική πράξη θανάτου</strong>.</li>
-            <li><strong>Πιστοποιητικό εγγυτέρων συγγενών</strong>.</li>
-            <li>Συγκέντρωση όλων των απαραίτητων βεβαιώσεων για την άμεση κατοχύρωση της παροχής.</li>
-        </ul>
-    </div>
 
-    <div class="intro-card">
-        <div class="intro-text">
-            <h3>Καταμέτρηση Ενσήμων</h3>
-            <p>Επίσημη βεβαίωση για τον ακριβή χρόνο ασφάλισής σας πριν την αίτηση.</p>
+        <div id="ensima" class="details-content">
+            <h4>Υπηρεσίες Καταμέτρησης:</h4>
+            <ul style="color: var(--text-muted); padding-left: 20px;">
+                <li><strong>Προσυνταξιοδοτική Βεβαίωση:</strong> Επίσημο έγγραφο για τον ακριβή χρόνο ασφάλισης.</li>
+                <li><strong>Έλεγχος Διαδοχικής:</strong> Ενοποίηση χρόνων από ΙΚΑ, ΟΑΕΕ, Δημόσιο κ.α.</li>
+                <li><strong>Εντοπισμός Κενών:</strong> Συμβουλευτική για την κάλυψη ασφαλιστικών περιόδων.</li>
+            </ul>
         </div>
-        <button class="toggle-btn" onclick="toggleSection('details-ensima', this)">Πληροφορίες <i class="fas fa-chevron-down"></i></button>
-    </div>
-    <div id="details-ensima" class="details-content">
-        <p>Η καταμέτρηση αποτελεί το θεμέλιο για τη συνταξιοδότηση. <strong>Υπηρεσίες:</strong></p>
-        <ul class="details-list">
-            <li><strong>Προσυνταξιοδοτική Βεβαίωση:</strong> Έκδοση επίσημου εγγράφου για τον χρόνο ασφάλισης.</li>
-            <li><strong>Έλεγχος Διαδοχικής:</strong> Ενοποίηση χρόνων από διαφορετικά ταμεία (ΙΚΑ, ΟΑΕΕ, κ.α.).</li>
-            <li><strong>Εντοπισμός Κενών:</strong> Συμβουλευτική για την κάλυψη ασφαλιστικών κενών.</li>
-        </ul>
-    </div>
 
-
-    <div class="section-group-title" id="benefits">Κοινωνική Πρόνοια</div>
-    <h2 class="section-title">Επιδόματα</h2>
-    <p class="section-intro">Διεκπεραιώνουμε αιτήσεις για κρατικά βοηθήματα, αναλαμβάνοντας τον έλεγχο ιατρικών και οικονομικών κριτηρίων.</p>
-
-    <div class="intro-card">
-        <div class="intro-text">
-            <h3>Επίδομα Απολύτου Αναπηρίας</h3>
-            <p>Προσαύξηση σύνταξης για όσους χρήζουν βοήθειας ετέρου προσώπου.</p>
+        <div class="card-wrapper">
+            <div class="intro-card" onclick="toggle('anapiria', this)">
+                <div class="card-info">
+                    <h3><i class="fas fa-heart-pulse"></i> Συντάξεις Αναπηρίας</h3>
+                    <p>Υποστήριξη για αιτήματα λόγω ατυχήματος ή νόσου.</p>
+                </div>
+                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+            </div>
         </div>
-        <button class="toggle-btn" onclick="toggleSection('details-apolyto', this)">Πληροφορίες <i class="fas fa-chevron-down"></i></button>
-    </div>
-    <div id="details-apolyto" class="details-content">
-        <p><strong>Έλεγχος προϋποθέσεων:</strong> Διαπίστωση αν η αναπηρία εμπίπτει στις διατάξεις του ετέρου προσώπου και υποβολή της αίτησης στον ασφαλιστικό φορέα.</p>
-    </div>
 
-    <div class="intro-card">
-        <div class="intro-text">
-            <h3>Ανασφάλιστοι Υπερήλικες (ΟΠΕΚΑ)</h3>
-            <p>Διαδικασίες για το βοήθημα κοινωνικής αλληλεγγύης.</p>
+        <div class="card-wrapper">
+            <div class="intro-card" onclick="toggle('thanatos', this)">
+                <div class="card-info">
+                    <h3><i class="fas fa-obelisk"></i> Συντάξεις Θανάτου</h3>
+                    <p>Μεταβίβαση ή απονομή λόγω απώλειας.</p>
+                </div>
+                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+            </div>
         </div>
-        <button class="toggle-btn" onclick="toggleSection('details-opeka', this)">Πληροφορίες <i class="fas fa-chevron-down"></i></button>
-    </div>
-    <div id="details-opeka" class="details-content">
-        <p><strong>Έλεγχος Κριτηρίων:</strong> Εξέταση ηλικιακών, εισοδηματικών και περιουσιακών στοιχείων (Ε1, Ε9) για την ένταξη στο βοήθημα.</p>
-    </div>
 
-    <div class="intro-card">
-        <div class="intro-text">
-            <h3>Εξωιδρυματικό Επίδομα</h3>
-            <p>Υποστήριξη για το επίδομα παραπληγίας - τετραπληγίας.</p>
+        <div id="anapiria" class="details-content">
+            <p><strong>Διαδικασία:</strong> Συγκέντρωση ιατρικών γνωματεύσεων, προετοιμασία φακέλου για ΚΕΠΑ και ηλεκτρονική υποβολή αίτησης.</p>
         </div>
-        <button class="toggle-btn" onclick="toggleSection('details-exo', this)">Πληροφορίες <i class="fas fa-chevron-down"></i></button>
-    </div>
-    <div id="details-exo" class="details-content">
-        <p>Αφορά ασφαλισμένους και συνταξιούχους με συγκεκριμένες κινητικές αναπηρίες. Προετοιμασία ιατρικού φακέλου και υποβολή αιτημάτων για την πιστοποίηση από τις υγειονομικές επιτροπές.</p>
-    </div>
-
-
-    <div class="section-group-title" id="vehicles">Οχήματα & Μετακίνηση</div>
-    <h2 class="section-title">Μεταβιβάσεις Οχημάτων</h2>
-    <p class="section-intro">Ολοκληρωμένη διαχείριση για τη μεταβίβαση κυριότητας οχημάτων, είτε μέσω Υπουργείου είτε ψηφιακά.</p>
-
-    <div class="intro-card">
-        <div class="intro-text">
-            <h3>Ηλεκτρονική Μεταβίβαση (Gov.gr)</h3>
-            <p>Μεταβίβαση Ι.Χ. επιβατικών και δικύκλων εύκολα και γρήγορα.</p>
-        </div>
-        <button class="toggle-btn" onclick="toggleSection('details-digital-transfer', this)">Διαδικασία <i class="fas fa-chevron-down"></i></button>
-    </div>
-    <div id="details-digital-transfer" class="details-content">
-        <p>Αξιοποιούμε την ψηφιακή πλατφόρμα του Gov.gr για ταχύτερη διεκπεραίωση:</p>
-        <ul class="details-list">
-            <li><strong>Προϋποθέσεις:</strong> Ισχύον ΚΤΕΟ, μη ύπαρξη παρακράτησης κυριότητας και εξοφλημένα τέλη.</li>
-            <li><strong>Διαδικασία:</strong> Ηλεκτρονική αποδοχή από αγοραστή και πωλητή και άμεση έκδοση της προσωρινής άδειας.</li>
-        </ul>
-    </div>
-
-    <div class="intro-card">
-        <div class="intro-text">
-            <h3>Αγροτικά Οχήματα (Φ.Ι.Χ.)</h3>
-            <p>Εξειδικευμένη διαδικασία για οχήματα αγροτικής χρήσης.</p>
-        </div>
-        <button class="toggle-btn" onclick="toggleSection('details-agrotika', this)">Πληροφορίες <i class="fas fa-chevron-down"></i></button>
-    </div>
-    <div id="details-agrotika" class="details-content">
-        <p><strong>Βεβαίωση ΜΑΑΕ:</strong> Έλεγχος εγγραφής στο Μητρώο Αγροτών και επιβεβαίωση της αγροτικής ιδιότητας και του εισοδήματος για την έγκριση της μεταβίβασης.</p>
-    </div>
-
-
-    <div class="section-group-title" id="other">Ψηφιακές Υπηρεσίες</div>
-    <h2 class="section-title">Εξειδικευμένες Ενέργειες</h2>
-    <p class="section-intro">Διαχείριση των ψηφιακών σας στοιχείων και των αιτημάτων προς τις υγειονομικές επιτροπές.</p>
-
-    <div class="intro-card">
-        <div class="intro-text">
-            <h3>Δήλωση Στοιχείων στο ΕΜΕΠ</h3>
-            <p>Επικαιροποίηση στοιχείων επικοινωνίας στο Ενιαίο Μητρώο.</p>
-        </div>
-        <button class="toggle-btn" onclick="toggleSection('details-emep', this)">Πληροφορίες <i class="fas fa-chevron-down"></i></button>
-    </div>
-    <div id="details-emep" class="details-content">
-        <p>Διασφαλίζουμε την ορθή δήλωση του κινητού τηλεφώνου και του email σας στο Ενιαίο Μητρώο Επικοινωνίας, ώστε να λαμβάνετε έγκυρα όλες τις ενημερώσεις και τα έγγραφα από το κράτος.</p>
-    </div>
-
-    <div class="intro-card">
-        <div class="intro-text">
-            <h3>Αιτήματα ΚΕΠΑ</h3>
-            <p>Πιστοποίηση αναπηρίας από τις αρμόδιες επιτροπές.</p>
-        </div>
-        <button class="toggle-btn" onclick="toggleSection('details-kepa', this)">Πληροφορίες <i class="fas fa-chevron-down"></i></button>
-    </div>
-    <div id="details-kepa" class="details-content">
-        <p>Ηλεκτρονική υποβολή αίτησης για εξέταση από τις υγειονομικές επιτροπές ΚΕΠΑ για κάθε είδους παροχή, σύνταξη ή κοινωνικό επίδομα.</p>
-    </div>
-
-    <div class="app-promo-card">
-        <div class="app-promo-icon"><i class="fas fa-mobile-alt"></i></div>
-        <div class="app-promo-text">
-            <div class="app-badge">ΔΩΡΟ ΓΙΑ ΤΟΥΣ ΠΕΛΑΤΕΣ ΜΑΣ</div>
-            <h2>Η δική σας ψηφιακή εφαρμογή</h2>
-            <p>Κάθε πελάτης μας αποκτά πρόσβαση σε μια προσωπική εφαρμογή όπου μπορεί να <strong>παρακολουθεί την πορεία της αίτησής του</strong> σε πραγματικό χρόνο. Δείτε όλο το ψηφιοποιημένο ασφαλιστικό σας ιστορικό, συγκεντρώστε δικαιολογητικά και στείλτε τα ηλεκτρονικά, εύκολα και γρήγορα.</p>
+        <div id="thanatos" class="details-content">
+            <p><strong>Δικαιολογητικά:</strong> Ληξιαρχική πράξη θανάτου, πιστοποιητικό εγγυτέρων συγγενών και βεβαιώσεις ασφαλιστικών φορέων.</p>
         </div>
     </div>
 
-    <section id="booking" class="booking-section">
-        <i class="fas fa-calendar-alt" style="font-size: 3rem; color: var(--terracotta-accent);"></i>
-        <h2>Online Προγραμματισμός Ραντεβού</h2>
-        <p>Δείτε τα διαθέσιμα ραντεβού και κλείστε τη συνάντησή σας.</p>
-        <a href="https://calendar.app.google/uyssxHBnhQHURkA89" target="_blank" class="calendar-btn">ΚΛΕΙΣΤΕ ΡΑΝΤΕΒΟΥ</a>
-    </section>
+    <div class="services-grid" id="benefits">
+        <div class="section-header">
+            <span class="section-badge">Social Welfare</span>
+            <h2 class="section-title">Επιδόματα</h2>
+        </div>
 
-    <section id="contact" class="contact-box">
-        <span style="color: var(--terracotta-accent); font-weight: bold;">Υπεύθυνος: Γκόρος Πέτρος</span>
-        <h2>Επικοινωνία</h2>
-        <span class="phone-style">2710 224 939  |  6955 316 277</span>
-        <p><i class="fas fa-map-marker-alt" style="color: var(--terracotta-accent);"></i> Πατριάρχου Γρηγορίου Ε 10, Τρίπολη</p>
-        <p><i class="fas fa-envelope" style="color: var(--terracotta-accent);"></i> sintaxi@taxisdp.gr</p>
-    </section>
+        <div class="card-wrapper">
+            <div class="intro-card" onclick="toggle('exo', this)">
+                <div class="card-info">
+                    <h3><i class="fas fa-wheelchair"></i> Εξωιδρυματικό Επίδομα</h3>
+                    <p>Υποστήριξη για παραπληγία & τετραπληγία.</p>
+                </div>
+                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+            </div>
+        </div>
+
+        <div class="card-wrapper">
+            <div class="intro-card" onclick="toggle('opeka', this)">
+                <div class="card-info">
+                    <h3><i class="fas fa-users"></i> Ανασφάλιστοι (ΟΠΕΚΑ)</h3>
+                    <p>Βοήθημα κοινωνικής αλληλεγγύης υπερηλίκων.</p>
+                </div>
+                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+            </div>
+        </div>
+
+        <div id="exo" class="details-content">
+            <p>Αφορά ασφαλισμένους με κινητικές αναπηρίες. Περιλαμβάνει την προετοιμασία ιατρικού φακέλου και την εκπροσώπηση στις επιτροπές.</p>
+        </div>
+        <div id="opeka" class="details-content">
+            <p>Έλεγχος ηλικιακών και εισοδηματικών κριτηρίων για την ένταξη ανασφάλιστων ατόμων στο επίδομα του ΟΠΕΚΑ.</p>
+        </div>
+        
+        <div class="card-wrapper">
+            <div class="intro-card" onclick="toggle('apolyto', this)">
+                <div class="card-info">
+                    <h3><i class="fas fa-hand-holding-medical"></i> Απόλυτη Αναπηρία</h3>
+                    <p>Προσαύξηση σύνταξης για ανάγκη ετέρου προσώπου.</p>
+                </div>
+                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+            </div>
+        </div>
+        <div id="apolyto" class="details-content">
+            <p>Αίτηση για την προσαύξηση του ποσού της σύνταξης σε περιπτώσεις όπου ο συνταξιούχος χρήζει συνεχούς επίβλεψης.</p>
+        </div>
+    </div>
+
+    <div class="app-section">
+        <i class="fas fa-mobile-screen"></i>
+        <div class="app-content">
+            <span class="app-badge">EXCLUSIVELY FOR CLIENTS</span>
+            <h2>Η Ψηφιακή σας Πύλη</h2>
+            <p>Κάθε πελάτης μας αποκτά πρόσβαση στην προσωπική του εφαρμογή. Παρακολουθήστε την πορεία της αίτησής σας, δείτε το ένσημά σας και στείλτε μας δικαιολογητικά με ένα κλικ από το κινητό σας.</p>
+        </div>
+    </div>
+
+    <div class="services-grid" id="vehicles">
+        <div class="section-header">
+            <span class="section-badge">Vehicle Transfers</span>
+            <h2 class="section-title">Μεταβιβάσεις</h2>
+        </div>
+
+        <div class="card-wrapper">
+            <div class="intro-card" onclick="toggle('trans-dig', this)">
+                <div class="card-info">
+                    <h3><i class="fas fa-bolt"></i> Ηλεκτρονική Μεταβίβαση</h3>
+                    <p>Ι.Χ. Αυτοκίνητα & Μοτοσυκλέτες μέσω Gov.gr.</p>
+                </div>
+                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+            </div>
+        </div>
+
+        <div class="card-wrapper">
+            <div class="intro-card" onclick="toggle('trans-agrot', this)">
+                <div class="card-info">
+                    <h3><i class="fas fa-tractor"></i> Αγροτικά & Συμβατικά</h3>
+                    <p>Διαδικασίες μέσω Υπουργείου & βεβαιώσεις ΜΑΑΕ.</p>
+                </div>
+                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+            </div>
+        </div>
+
+        <div id="trans-dig" class="details-content">
+            <p><strong>Πλεονεκτήματα:</strong> Ταχύτητα και ασφάλεια. Απαιτείται ενεργό ΚΤΕΟ, μη παρακράτηση κυριότητας και κωδικοί Taxisnet.</p>
+        </div>
+        <div id="trans-agrot" class="details-content">
+            <p>Διεκπεραίωση για αγροτικά Φ.Ι.Χ. με έλεγχο μητρώου αγροτών και όλες τις απαραίτητες υπεύθυνες δηλώσεις.</p>
+        </div>
+    </div>
+
+    <div class="services-grid" id="digital">
+        <div class="section-header">
+            <span class="section-badge">Modern State</span>
+            <h2 class="section-title">Ψηφιακές Υπηρεσίες</h2>
+        </div>
+
+        <div class="card-wrapper">
+            <div class="intro-card" onclick="toggle('emep-card', this)">
+                <div class="card-info">
+                    <h3><i class="fas fa-id-card-clip"></i> Στοιχεία ΕΜΕΠ</h3>
+                    <p>Επικαιροποίηση στοιχείων επικοινωνίας.</p>
+                </div>
+                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+            </div>
+        </div>
+
+        <div class="card-wrapper">
+            <div class="intro-card" onclick="toggle('kepa-card', this)">
+                <div class="card-info">
+                    <h3><i class="fas fa-notes-medical"></i> Αιτήματα ΚΕΠΑ</h3>
+                    <p>Ηλεκτρονική υποβολή για επιτροπές.</p>
+                </div>
+                <button class="toggle-btn"><i class="fas fa-plus"></i></button>
+            </div>
+        </div>
+
+        <div id="emep-card" class="details-content">
+            <p>Δήλωση τηλεφώνου και email στο Εθνικό Μητρώο Επικοινωνίας για να λαμβάνετε έγκαιρα ειδοποιήσεις από το δημόσιο.</p>
+        </div>
+        <div id="kepa-card" class="details-content">
+            <p>Ψηφιακή κατάθεση φακέλου για πιστοποίηση αναπηρίας και παρακολούθηση της ημερομηνίας εξέτασης.</p>
+        </div>
+    </div>
+
+    <div class="section-header" id="booking" style="margin-top: 100px;">
+        <i class="fas fa-calendar-check" style="font-size: 4rem; color: var(--accent); margin-bottom: 20px;"></i>
+        <h2>Κλείστε το ραντεβού σας</h2>
+        <p>Επιλέξτε την ώρα που σας βολεύει και θα σας περιμένουμε στο γραφείο μας.</p>
+        <a href="https://calendar.app.google/uyssxHBnhQHURkA89" target="_blank" style="text-decoration: none;">
+            <button class="toggle-btn" style="padding: 20px 50px; font-size: 1.1rem; border-radius: 15px;">ΠΡΟΓΡΑΜΜΑΤΙΣΜΟΣ ONLINE</button>
+        </a>
+    </div>
+
 </div>
 
-<footer><p>© 2026 Γκόρος Πέτρος | Διεκπεραίωση Συντάξεων</p></footer>
+<footer>
+    <p style="text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">Επικοινωνία</p>
+    <a href="tel:2710224939" class="phone-link">2710 224 939</a>
+    <p>Κινητό: 6955 316 277</p>
+    <p>Πατριάρχου Γρηγορίου Ε 10, Τρίπολη</p>
+    <p style="opacity: 0.3; margin-top: 50px; font-size: 0.8rem;">© 2026 ΠΕΤΡΟΣ ΓΚΟΡΟΣ | TAXISDP</p>
+</footer>
 
 <script>
-    function toggleSection(id, btn) {
-        var allContents = document.querySelectorAll('.details-content');
-        var allButtons = document.querySelectorAll('.toggle-btn');
-        var targetContent = document.getElementById(id);
-        var isOpening = (targetContent.style.display !== 'block');
+    // Toggle Function
+    function toggle(id, card) {
+        const content = document.getElementById(id);
+        const icon = card.querySelector('.toggle-btn i');
+        const isOpen = content.style.display === 'block';
 
-        allContents.forEach(content => content.style.display = 'none');
-        allButtons.forEach(b => {
-            const h3Text = b.parentNode.querySelector('h3').innerText;
-            if(h3Text.includes('Γήρατος') || h3Text.includes('Ηλεκτρονική')) b.innerHTML = 'Διαδικασία <i class="fas fa-chevron-down"></i>';
-            else b.innerHTML = 'Πληροφορίες <i class="fas fa-chevron-down"></i>';
+        // Close all
+        document.querySelectorAll('.details-content').forEach(d => d.style.display = 'none');
+        document.querySelectorAll('.toggle-btn i').forEach(i => {
+            i.classList.remove('fa-minus');
+            i.classList.add('fa-plus');
         });
 
-        if (isOpening) {
-            targetContent.style.display = 'block';
-            btn.innerHTML = 'Απόκρυψη <i class="fas fa-chevron-up"></i>';
+        if (!isOpen) {
+            content.style.display = 'block';
+            icon.classList.remove('fa-plus');
+            icon.classList.add('fa-minus');
+            content.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
+    }
+
+    // Back to Top Logic
+    const btt = document.getElementById("backToTop");
+    window.onscroll = function() {
+        if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+            btt.style.display = "block";
+        } else {
+            btt.style.display = "none";
+        }
+    };
+
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 </script>
 
