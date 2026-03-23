@@ -139,6 +139,7 @@
             box-shadow: 0 0 0 4px rgba(179,90,68,0.2); 
         }
         .t-item h4 { margin: 0; font-size: 1rem; color: var(--dark); }
+        .t-item p { margin: 5px 0 0 0; font-size: 0.9rem; }
 
         @keyframes step-glow {
             0% { box-shadow: 0 0 0 4px rgba(179,90,68,0.2); }
@@ -152,6 +153,9 @@
         .animate-steps .t-item:nth-child(4)::before { animation: step-glow 0.8s ease-out 0.8s; }
         .animate-steps .t-item:nth-child(5)::before { animation: step-glow 0.8s ease-out 1.0s; }
         .animate-steps .t-item:nth-child(6)::before { animation: step-glow 0.8s ease-out 1.2s; }
+        .animate-steps .t-item:nth-child(7)::before { animation: step-glow 0.8s ease-out 1.4s; }
+        .animate-steps .t-item:nth-child(8)::before { animation: step-glow 0.8s ease-out 1.6s; }
+        .animate-steps .t-item:nth-child(9)::before { animation: step-glow 0.8s ease-out 1.8s; }
 
         /* --- Reveal Effect --- */
         .reveal { opacity: 0; transform: translateY(15px); transition: opacity 0.4s ease-out, transform 0.4s ease-out; }
@@ -164,13 +168,12 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 2px solid var(--accent);
         }
         
-        /* ΝΕΑ ΣΤΥΛ ΓΙΑ ΤΟ ЛΟΓΟΤΥΠΟ ΣΤΟ PROMO BOX */
         .promo-logo-img {
-            width: 90px; /* Ιδανικό μέγεθος για υπολογιστή */
+            width: 90px;
             height: 90px;
-            object-fit: contain; /* Δεν κόβεται, δεν αφήνει κενά */
+            object-fit: contain;
             flex-shrink: 0;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); /* Ελαφριά σκιά για βάθος */
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
         }
         
         .promo-content-wrapper {
@@ -286,17 +289,13 @@
             .fab-main { width: 50px; height: 50px; font-size: 1.3rem; }
             .fab-btn { width: 40px; height: 40px; font-size: 1rem; }
             
-            /* ΑΛΛΑΓΕΣ PROMO BOX ΓΙΑ ΚΙΝΗΤΑ: Το λογότυπο πάει πάνω, κεντραρισμένο */
             .promo-box {
-                flex-direction: column; /* Στοίχιση κάθετα */
+                flex-direction: column; 
                 text-align: center;
                 padding: 30px 20px;
                 gap: 20px;
             }
-            .promo-logo-img {
-                width: 80px; /* Λίγο μικρότερο στο κινητό */
-                height: 80px;
-            }
+            .promo-logo-img { width: 80px; height: 80px; }
         }
     </style>
 </head>
@@ -318,7 +317,7 @@
 
 <header>
     <h1 class="reveal active">Διεκπεραίωση Συνταξιοδοτικών Υποθέσεων</h1>
-    <h2 class="reveal active">Πέτρος Γκόρος</h2>
+    <h2 class="reveal active">Πέτρος Κ. Γκόρος</h2>
 </header>
 
 <div class="container">
@@ -326,7 +325,7 @@
     <div class="tabs-nav reveal active">
         <button class="tab-btn active" onclick="openTab('pensions', this)"><i class="fas fa-user-clock"></i> Συντάξεις</button>
         <button class="tab-btn" onclick="openTab('benefits', this)"><i class="fas fa-hand-holding-medical"></i> Επιδόματα</button>
-        <button class="tab-btn" onclick="openTab('digital', this)"><i class="fas fa-laptop-code"></i> Ψηφιακά</button>
+        <button class="tab-btn" onclick="openTab('digital', this)"><i class="fas fa-laptop-code"></i> Ψηφιακές Υπηρεσίες</button>
         <button class="tab-btn" onclick="openTab('vehicles', this)"><i class="fas fa-car"></i> Οχήματα</button>
     </div>
 
@@ -334,7 +333,7 @@
         <div class="section-header reveal">
             <span class="section-badge">Κοινωνική Ασφάλιση</span>
             <h2 class="section-title">Συντάξεις</h2>
-            <p class="section-desc">Εξυπηρετούμε όλα τα ασφαλιστικά ταμεία (<strong>ΟΓΑ, ΙΚΑ, ΟΑΕΕ, ΕΦΚΑ, ΔΗΜΟΣΙΟ</strong>), αναλαμβάνοντας πλήρως τη διαδικασία για την έκδοση της σύνταξής σας.</p>
+            <p class="section-desc">Εξυπηρετούμε όλα τα ασφαλιστικά ταμεία (<strong>ΟΓΑ, ΙΚΑ, ΟΑΕΕ, ΕΦΚΑ, ΔΗΜΟΣΙΟ</strong>). Βρισκόμαστε δίπλα σας σε κάθε βήμα: από τον αρχικό έλεγχο θεμελίωσης και τη σύγκριση σεναρίων, μέχρι τον ακριβή υπολογισμό του ποσού. Αναλαμβάνουμε την κατάθεση του φακέλου σας και παρακολουθούμε στενά την πορεία της αίτησης μέχρι την τελική έκδοση της σύνταξης.</p>
         </div>
 
         <div class="services-grid grid-2-cols">
@@ -348,12 +347,14 @@
                 </div>
                 <div id="ghratos" class="details-content">
                     <div class="timeline">
-                        <div class="t-item"><h4>1. Έλεγχος Θεμελίωσης</h4><p>Εξέταση δικαιώματος και ορίων ηλικίας.</p></div>
-                        <div class="t-item"><h4>2. Σενάρια & Πλασματικά</h4><p>Ανάλυση για εξαγορές ετών ή μειωμένη σύνταξη.</p></div>
-                        <div class="t-item"><h4>3. Διαχείριση Οφειλών</h4><p>Ρυθμίσεις και συμψηφισμοί χρεών στον ΕΦΚΑ.</p></div>
-                        <div class="t-item"><h4>4. Επικαιροποίηση Στοιχείων</h4><p>Ταυτοποίηση σε ΕΦΚΑ, ΔΟΥ, Ληξιαρχείο.</p></div>
-                        <div class="t-item"><h4>5. Υπολογισμός Ποσού</h4><p>Πρόβλεψη της τελικής σύνταξης.</p></div>
-                        <div class="t-item"><h4>6. Κατάθεση & Παρακολούθηση</h4><p>Ψηφιακή υποβολή και έλεγχος πορείας.</p></div>
+                        <div class="t-item"><h4>1. Έλεγχος Θεμελίωσης</h4><p>Εξέταση δικαιώματος και ορίων ηλικίας</p></div>
+                        <div class="t-item"><h4>2. Ακριβής Υπολογισμός Ποσού Σύνταξης</h4><p>Πρόβλεψη της τελικής σύνταξης</p></div>
+                        <div class="t-item"><h4>3. Σενάρια & Πλασματικά</h4><p>Ανάλυση για εξαγορές ετών ή μειωμένη σύνταξη</p></div>
+                        <div class="t-item"><h4>4. Επικαιροποίηση Στοιχείων</h4><p>Ταυτοποίηση σε ΕΦΚΑ, ΔΟΥ, Ληξιαρχείο</p></div>
+                        <div class="t-item"><h4>5. Έλεγχος & Διαχείριση Οφειλών</h4><p>Ρυθμίσεις χρεών στον ΕΦΚΑ</p></div>
+                        <div class="t-item"><h4>6. Κατάθεση Δικαιολογητικών</h4><p>Ψηφιακή υποβολή της αίτησης</p></div>
+                        <div class="t-item"><h4>7. Παρακολούθηση Πορείας Αίτησης</h4><p>Συνεχής έλεγχος για το στάδιο επεξεργασίας από τον ΕΦΚΑ</p></div>
+                        <div class="t-item"><h4>8. Έλεγχος Απόφασης & Πληρωμής</h4><p>Με την ηλεκτρονική ανάρτηση της απόφασής σας πραγματοποιούμε έλεγχο για την εγκυρότητά της, όπως επίσης και για το σύνολο των αναδρομικών ποσών της πρώτης πληρωμής</p></div>
                     </div>
                 </div>
             </div>
@@ -365,17 +366,34 @@
                     </div>
                     <button class="toggle-btn">Πληροφορίες</button>
                 </div>
-                <div id="anapiria" class="details-content"><p>Οργάνωση ιατρικού φακέλου, συγκέντρωση γνωματεύσεων ΚΕΠΑ και ηλεκτρονική υποβολή της αίτησης στον ασφαλιστικό φορέα.</p></div>
+                <div id="anapiria" class="details-content">
+                    <div class="timeline">
+                        <div class="t-item"><h4>1. Έλεγχος Προϋποθέσεων</h4><p>Έλεγχος προϋποθέσεων απονομής ή παράτασης σύνταξης αναπηρίας</p></div>
+                        <div class="t-item"><h4>2. Ακριβής Υπολογισμός Ποσού Σύνταξης</h4><p>Πρόβλεψη της τελικής σύνταξης</p></div>
+                        <div class="t-item"><h4>3. Σενάρια & Πλασματικά</h4><p>Ανάλυση για εξαγορές ετών ή μειωμένη σύνταξη</p></div>
+                        <div class="t-item"><h4>4. Επικαιροποίηση Στοιχείων</h4><p>Ταυτοποίηση σε ΕΦΚΑ, ΔΟΥ, Ληξιαρχείο</p></div>
+                        <div class="t-item"><h4>5. Έλεγχος & Διαχείριση Οφειλών</h4><p>Ρυθμίσεις χρεών στον ΕΦΚΑ</p></div>
+                        <div class="t-item"><h4>6. Κατάθεση Δικαιολογητικών</h4><p>Ψηφιακή υποβολή της αίτησης</p></div>
+                        <div class="t-item"><h4>7. Παρακολούθηση Πορείας Αίτησης</h4><p>Συνεχής έλεγχος για το στάδιο επεξεργασίας από τον ΕΦΚΑ</p></div>
+                        <div class="t-item"><h4>8. Έλεγχος Απόφασης & Πληρωμής</h4><p>Με την ηλεκτρονική ανάρτηση της απόφασής σας πραγματοποιούμε έλεγχο για την εγκυρότητά της, όπως επίσης και για το σύνολο των αναδρομικών ποσών της πρώτης πληρωμής</p></div>
+                    </div>
+                </div>
             </div>
             <div class="card-unit reveal">
                 <div class="intro-card" onclick="toggle('thanatos', this)">
                     <div class="card-info">
                         <h3><i class="fas fa-heart-crack"></i> Συντάξεις Θανάτου</h3>
-                        <p>Μεταβίβαση ή απονομή λόγω απώλειας.</p>
+                        <p>Μεταβίβαση σύνταξης λόγω θανάτου συνταξιούχου ή απονομή λόγω θανάτου ασφαλισμένου.</p>
                     </div>
                     <button class="toggle-btn">Πληροφορίες</button>
                 </div>
-                <div id="thanatos" class="details-content"><p>Διεκπεραίωση για μεταβίβαση σύνταξης. Απαιτούνται ληξιαρχική πράξη θανάτου, πιστοποιητικό εγγυτέρων και βεβαιώσεις ταμείων.</p></div>
+                <div id="thanatos" class="details-content">
+                    <div class="timeline">
+                        <div class="t-item"><h4>1. Έλεγχος Προϋποθέσεων</h4><p>Έλεγχος προϋποθέσεων μεταβίβασης σύνταξης</p></div>
+                        <div class="t-item"><h4>2. Ειδικά για τον ΟΓΑ</h4><p>Μελετάμε προσεκτικά το φάκελό σας, προστατεύοντάς σας από μεταβιβάσεις που μπορεί, αντί να αυξήσουν, να μειώσουν το συνολικό μηνιαίο εισόδημά σας</p></div>
+                        <div class="t-item"><h4>3. Άμεση Ενημέρωση Συστήματος</h4><p>Ώστε να μην λαμβάνετε για μεγάλο διάστημα χρήματα που δεν δικαιούστε</p></div>
+                    </div>
+                </div>
             </div>
             <div class="card-unit reveal">
                 <div class="intro-card" onclick="toggle('ensima', this)">
@@ -385,7 +403,15 @@
                     </div>
                     <button class="toggle-btn">Πληροφορίες</button>
                 </div>
-                <div id="ensima" class="details-content"><p>Προσυνταξιοδοτική βεβαίωση καταμέτρησης χρόνου και ενοποίηση χρόνων από διαδοχική ασφάλιση σε διαφορετικά ταμεία.</p></div>
+                <div id="ensima" class="details-content">
+                    <div class="timeline">
+                        <div class="t-item"><h4>1. Ανάλυση Ιστορικού</h4><p>Αναλυτική καταμέτρηση ενσήμων και ανάλυση ασφαλιστικού ιστορικού</p></div>
+                        <div class="t-item"><h4>2. Ηλεκτρονική Αίτηση</h4><p>Υποβολή ηλεκτρονικής αίτησης για Προσυνταξιοδοτική Βεβαίωση</p></div>
+                        <div class="t-item"><h4>3. Δικαιολογητικά</h4><p>Κατάθεση των απαραίτητων δικαιολογητικών</p></div>
+                        <div class="t-item"><h4>4. Παρακολούθηση</h4><p>Παρακολούθηση της πορείας της αίτησης</p></div>
+                        <div class="t-item"><h4>5. Ολοκλήρωση</h4><p>Παραλαβή της Απόφασης</p></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -401,32 +427,45 @@
             <div class="card-unit reveal">
                 <div class="intro-card" onclick="toggle('b-exo', this)">
                     <div class="card-info">
-                        <h3><i class="fas fa-hand-holding-medical"></i> Εξωιδρυματικό</h3>
-                        <p>Βοήθημα παραπληγίας.</p>
+                        <h3><i class="fas fa-hand-holding-medical"></i> Εξωιδρυματικό Επίδομα</h3>
+                        <p>Αφορά ασφαλισμένους με συγκεκριμένες αναπηρίες.</p>
                     </div>
                     <button class="toggle-btn">Πληροφορίες</button>
                 </div>
-                <div id="b-exo" class="details-content"><p>Αφορά ασφαλισμένους με συγκεκριμένες κινητικές αναπηρίες. Προετοιμασία φακέλου για τις υγειονομικές επιτροπές.</p></div>
+                <div id="b-exo" class="details-content">
+                    <div class="timeline">
+                        <div class="t-item"><h4>1. Έλεγχος Για ΚΕΠΑ</h4><p>Αν υπάρχει απόφαση ΚΕΠΑ ελέγχουμε αν υπάρχει δυνατότητα απονομής του επιδόματος αλλιώς ξεκινάμε τη διαδικασία ελέγχου από την Υγειονομική Επιτροπή</p></div>
+                        <div class="t-item"><h4>2. Δικαιολογητικά</h4><p>Κατάθεση Δικαιολογητικών</p></div>
+                        <div class="t-item"><h4>3. Ολοκλήρωση</h4><p>Παρακολούθηση και Έλεγχος Απόφασης</p></div>
+                    </div>
+                </div>
             </div>
             <div class="card-unit reveal">
                 <div class="intro-card" onclick="toggle('b-opeka', this)">
                     <div class="card-info">
-                        <h3><i class="fas fa-users-rectangle"></i> ΟΠΕΚΑ</h3>
-                        <p>Ανασφάλιστοι υπερήλικες.</p>
+                        <h3><i class="fas fa-users-rectangle"></i> Ανασφάλιστων Υπερηλίκων</h3>
+                        <p>Έλεγχος ένταξης στο βοήθημα.</p>
                     </div>
                     <button class="toggle-btn">Πληροφορίες</button>
                 </div>
-                <div id="b-opeka" class="details-content"><p>Έλεγχος εισοδηματικών και περιουσιακών κριτηρίων για την ένταξη στο βοήθημα κοινωνικής αλληλεγγύης του ΟΠΕΚΑ.</p></div>
+                <div id="b-opeka" class="details-content">
+                    <div class="timeline">
+                        <div class="t-item"><h4>1. Έλεγχος Κριτηρίων</h4><p>Έλεγχος εισοδηματικών και περιουσιακών κριτηρίων για την ένταξη στο βοήθημα Ανασφάλιστων Υπερηλίκων του ΟΠΕΚΑ</p></div>
+                        <div class="t-item"><h4>2. Συγκέντρωση</h4><p>Συγκέντρωση και κατάθεση δικαιολογητικών</p></div>
+                        <div class="t-item"><h4>3. Παρακολούθηση</h4><p>Παρακολούθηση αιτήματος</p></div>
+                        <div class="t-item"><h4>4. Ολοκλήρωση</h4><p>Έλεγχος Απόφασης</p></div>
+                    </div>
+                </div>
             </div>
             <div class="card-unit reveal">
                 <div class="intro-card" onclick="toggle('b-apolyth', this)">
                     <div class="card-info">
-                        <h3><i class="fas fa-user-shield"></i> Απόλυτη Αναπηρία</h3>
+                        <h3><i class="fas fa-user-shield"></i> Απολύτου Αναπηρίας</h3>
                         <p>Προσαύξηση σύνταξης.</p>
                     </div>
                     <button class="toggle-btn">Πληροφορίες</button>
                 </div>
-                <div id="b-apolyth" class="details-content"><p>Αίτηση για προσαύξηση του ποσού της σύνταξης σε περιπτώσεις που απαιτείται συνεχής επίβλεψη από έτερο πρόσωπο.</p></div>
+                <div id="b-apolyth" class="details-content"><p>Αίτηση για προσαύξηση του ποσού της σύνταξης σε περιπτώσεις που απαιτείται συνεχής επίβλεψη από έτερο πρόσωπο</p></div>
             </div>
         </div>
     </div>
@@ -442,32 +481,39 @@
             <div class="card-unit reveal">
                 <div class="intro-card" onclick="toggle('d-emep', this)">
                     <div class="card-info">
-                        <h3><i class="fas fa-address-card"></i> Στοιχεία ΕΜΕΠ</h3>
-                        <p>Εθνικό Μητρώο Επικοινωνίας.</p>
+                        <h3><i class="fas fa-address-card"></i> Ενημέρωση στοιχείων στο ΕΜΕΠ</h3>
+                        <p>Εθνικό Μητρώο Επικοινωνίας</p>
                     </div>
                     <button class="toggle-btn">Πληροφορίες</button>
                 </div>
-                <div id="d-emep" class="details-content"><p>Δήλωση κινητού και email στο ΕΜΕΠ για άμεση ενημέρωση από όλες τις δημόσιες υπηρεσίες.</p></div>
+                <div id="d-emep" class="details-content"><p>Δήλωση του αριθμού του κινητού σας τηλεφώνου και του e-mail στο Εθνικό Μητρώο Επικοινωνίας (ΕΜΕΠ) για την άμεση ενημέρωσή σας από όλες τις Δημόσιες Υπηρεσίες</p></div>
             </div>
             <div class="card-unit reveal">
                 <div class="intro-card" onclick="toggle('d-kepa', this)">
                     <div class="card-info">
                         <h3><i class="fas fa-notes-medical"></i> Αιτήματα ΚΕΠΑ</h3>
-                        <p>Ψηφιακή υποβολή φακέλου.</p>
+                        <p>Ηλεκτρονική υποβολή αίτησης</p>
                     </div>
                     <button class="toggle-btn">Πληροφορίες</button>
                 </div>
-                <div id="d-kepa" class="details-content"><p>Ηλεκτρονική κατάθεση φακέλου για πιστοποίηση αναπηρίας και παρακολούθηση της ημερομηνίας εξέτασης.</p></div>
+                <div id="d-kepa" class="details-content">
+                    <div class="timeline">
+                        <div class="t-item"><h4>1. Υποβολή</h4><p>Ηλεκτρονική υποβολή αίτησης</p></div>
+                        <div class="t-item"><h4>2. Καθοδήγηση</h4><p>Καθοδήγηση για την συγκέντρωση εγγράφων από ιατρούς για την πιστοποίηση της αναπηρίας</p></div>
+                        <div class="t-item"><h4>3. Εξέταση</h4><p>Παρακολούθηση της ημερομηνίας εξέτασης</p></div>
+                        <div class="t-item"><h4>4. Αποτελέσματα</h4><p>Αποτελέσματα ποσοστού και Ενημέρωση για το επόμενο διάστημα που πρόκειται να γίνει επανεξέταση της αναπηρίας και του δικαιώματος λήψης συντάξεως ΚΕΠΑ</p></div>
+                    </div>
+                </div>
             </div>
             <div class="card-unit reveal">
                 <div class="intro-card" onclick="toggle('d-dilosi', this)">
                     <div class="card-info">
-                        <h3><i class="fas fa-file-signature"></i> Υπεύθυνες Δηλώσεις</h3>
-                        <p>Έκδοση μέσω Gov.gr.</p>
+                        <h3><i class="fas fa-file-signature"></i> Υπεύθυνες Δηλώσεις - Ψηφιακές Υπογραφές</h3>
+                        <p>Έκδοση μέσω της ιστοσελίδας του Υπουργείου Gov.gr.</p>
                     </div>
                     <button class="toggle-btn">Πληροφορίες</button>
                 </div>
-                <div id="d-dilosi" class="details-content"><p>Σύνταξη και ηλεκτρονική υπογραφή υπεύθυνης δήλωσης για κάθε νόμιμη χρήση, άμεσα και έγκυρα.</p></div>
+                <div id="d-dilosi" class="details-content"><p>Υπεύθυνη Δήλωση και ηλεκτρονική υπογραφή σε έγγραφα για κάθε νόμιμη χρήση, άμεσα και έγκυρα</p></div>
             </div>
             <div class="card-unit reveal">
                 <div class="intro-card" onclick="toggle('d-exousio', this)">
@@ -477,7 +523,7 @@
                     </div>
                     <button class="toggle-btn">Πληροφορίες</button>
                 </div>
-                <div id="d-exousio" class="details-content"><p>Δημιουργία ψηφιακής εξουσιοδότησης για τη διεκπεραίωση υποθέσεων χωρίς επίσκεψη σε ΚΕΠ.</p></div>
+                <div id="d-exousio" class="details-content"><p>Δημιουργία ψηφιακής εξουσιοδότησης για τη διεκπεραίωση υποθέσεων χωρίς ο ενδιαφερόμενος να χρειάζεται να επισκεφθεί κάποιο κατάστημα ΚΕΠ</p></div>
             </div>
         </div>
     </div>
@@ -498,27 +544,32 @@
                     </div>
                     <button class="toggle-btn">Διαδικασία</button>
                 </div>
-                <div id="v-dig" class="details-content"><p>Γρήγορη διαδικασία μέσω ψηφιακής πλατφόρμας. Απαιτείται κωδικός Taxisnet, ενεργό ΚΤΕΟ και εξοφλημένα τέλη κυκλοφορίας.</p></div>
+                <div id="v-dig" class="details-content">
+                    <div class="timeline">
+                        <div class="t-item"><h4>1. Διαδικασία</h4><p>Γρήγορη διαδικασία μέσω ψηφιακής πλατφόρμας</p></div>
+                        <div class="t-item"><h4>2. Απαιτούμενα</h4><p>Απαιτούνται οι κωδικοί Taxisnet, ενεργό ΚΤΕΟ καθώς και εξοφλημένα τέλη κυκλοφορίας</p></div>
+                    </div>
+                </div>
             </div>
             <div class="card-unit reveal">
                 <div class="intro-card" onclick="toggle('v-stop', this)">
                     <div class="card-info">
                         <h3><i class="fas fa-car-side"></i> Ψηφιακή Ακινησία</h3>
-                        <p>Παύση μέσω MyCar.</p>
+                        <p>Ψηφιακή ακινησία ή άρση ακινησίας άμεσα χωρίς αναμονή.</p>
                     </div>
                     <button class="toggle-btn">Πληροφορίες</button>
                 </div>
-                <div id="v-stop" class="details-content"><p>Προσωρινή παύση κυκλοφορίας ηλεκτρονικά, χωρίς κατάθεση πινακίδων. Απαιτείται δήλωση του σημείου στάθμευσης.</p></div>
+                <div id="v-stop" class="details-content"><p>Πραγματοποιείται η προσωρινή παύση κυκλοφορίας του οχήματος ηλεκτρονικά χωρίς να χρειάζεται η κατάθεση πινακίδων. Επίσης, γίνεται και άρση της ακινησίας όταν επιθυμείτε να το επαναφέρετε στην κυκλοφορία</p></div>
             </div>
             <div class="card-unit reveal">
                 <div class="intro-card" onclick="toggle('v-agr', this)">
                     <div class="card-info">
-                        <h3><i class="fas fa-tractor"></i> Αγροτικά & Επαγγελματικά</h3>
-                        <p>Βεβαιώσεις ΜΑΑΕ.</p>
+                        <h3><i class="fas fa-tractor"></i> Αγροτικά & Επαγγελματικά Οχήματα</h3>
+                        <p>Άμεση διεκπεραίωση χωρίς την ταλαιπωρία της αναμονής και γραφειοκρατίας</p>
                     </div>
                     <button class="toggle-btn">Πληροφορίες</button>
                 </div>
-                <div id="v-agr" class="details-content"><p>Διεκπεραίωση για μεταβιβάσεις αγροτικών Φ.Ι.Χ. και επαγγελματικών οχημάτων με πλήρη έλεγχο δικαιολογητικών.</p></div>
+                <div id="v-agr" class="details-content"><p>Διεκπεραίωση για μεταβιβάσεις αγροτικών Φορτηγών Ιδιωτικής Χρήσης (Φ.Ι.Χ.) και επαγγελματικών οχημάτων με τη συγκέντρωση όλων των απαραίτητων δικαιολογητικών (Βεβαιώσεις Μητρώου Αγροτών και Αγροτικών Εκμεταλλεύσεων (ΜΑΑΕ)</p></div>
             </div>
         </div>
     </div>
@@ -530,7 +581,7 @@
             <span class="promo-badge">ΑΠΟΚΛΕΙΣΤΙΚΑ ΓΙΑ ΤΟΥΣ ΠΕΛΑΤΕΣ ΜΑΣ</span>
             <h2 style="margin: 0 0 10px 0; font-size: 1.6rem; color: #fff;">Η Ψηφιακή μας Εφαρμογή SintaxisApp</h2>
             <p style="margin: 0; font-size: 1rem; line-height: 1.6; color: rgba(255,255,255,0.95);">
-                Μέσω της εφαρμογής μας, μπορείτε να <strong>παρακολουθείτε την πορεία της αίτησής σας</strong>, να έχετε πρόσβαση στο ασφαλιστικό σας ιστορικό και να αποστέλλετε άμεσα όλα τα απαραίτητα δικαιολογητικά.
+                Μέσω της εφαρμογής μας, μπορείτε να <strong>παρακολουθείτε την πορεία της αίτησής σας</strong>, να έχετε πρόσβαση στο ασφαλιστικό σας ιστορικό και να αποστείλετε άμεσα όλα τα απαραίτητα δικαιολογητικά.
             </p>
         </div>
     </div>
@@ -575,7 +626,7 @@
         <a href="https://www.instagram.com/taxisdp" target="_blank" class="social-btn" style="width: 45px; height: 45px; border-radius: 50%; background: #2c3e50; display: inline-flex; align-items: center; justify-content: center; color: white; text-decoration: none; margin: 0 10px;"><i class="fab fa-instagram"></i></a>
         <a href="viber://chat?number=+306955316277" class="social-btn" style="width: 45px; height: 45px; border-radius: 50%; background: #2c3e50; display: inline-flex; align-items: center; justify-content: center; color: white; text-decoration: none; margin: 0 10px;"><i class="fab fa-viber"></i></a>
     </div>
-    <p style="opacity: 0.3; margin-top: 40px; font-size: 0.8rem;">© 2026 TAXISDP | ΠΕΤΡΟΣ ΓΚΟΡΟΣ</p>
+    <p style="opacity: 0.3; margin-top: 40px; font-size: 0.8rem;">© 2026 | ΠΕΤΡΟΣ ΓΚΟΡΟΣ</p>
 </footer>
 
 <script>
