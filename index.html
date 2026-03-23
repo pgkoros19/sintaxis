@@ -180,20 +180,15 @@
         .details-content.animate-steps .timeline .t-item:nth-child(6)::before { animation-delay: 1.1s; }
 
         .promo-box {
-            background: linear-gradient(135deg, #1a1f24 0%, #34495e 100%);
-            color: white; padding: 50px; border-radius: 24px;
-            display: flex; align-items: center; gap: 40px; margin: 60px 0;
+            background: #1a1f24;
+            color: white; padding: 40px; border-radius: 24px;
+            display: flex; align-items: center; justify-content: space-between; gap: 30px; margin: 60px 0;
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border: 2px solid var(--accent);
         }
-        .promo-box i.main-icon { font-size: 5rem; color: var(--accent); }
-        .promo-badge { background: var(--accent); padding: 5px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 800; margin-bottom: 15px; display: inline-block; }
-        .promo-btn {
-            background: var(--accent); color: white; border: none; padding: 18px 35px;
-            border-radius: 12px; font-weight: 700; font-size: 1rem; cursor: pointer;
-            text-decoration: none; display: inline-block; margin-top: 20px; transition: var(--transition);
-        }
-        .promo-btn:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(179,90,68,0.3); }
-
+        .promo-box i.main-icon { font-size: 4rem; color: var(--accent); flex-shrink: 0; }
+        .promo-badge { background: var(--accent); padding: 5px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 800; margin-bottom: 15px; display: inline-block; text-transform: uppercase; letter-spacing: 1.2px; }
+        
         .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
@@ -371,10 +366,15 @@
 
     <div class="promo-box reveal">
         <i class="fas fa-mobile-screen-button main-icon"></i>
-        <div>
+        <div style="flex-grow: 1; padding: 0 10px;">
             <span class="promo-badge">ΑΠΟΚΛΕΙΣΤΙΚΑ ΓΙΑ ΤΟΥΣ ΠΕΛΑΤΕΣ ΜΑΣ</span>
-            <h2 style="margin: 0 0 10px 0;">Η Ψηφιακή σας Εφαρμογή</h2>
-            <p style="margin: 0; opacity: 0.9;">Κάθε πελάτης μας αποκτά πρόσβαση σε μια προσωπική εφαρμογή για να παρακολουθεί την πορεία της αίτησής του και το ασφαλιστικό του ιστορικό σε πραγματικό χρόνο.</p>
+            <h2 style="margin: 0 0 10px 0; font-size: 1.6rem; color: #fff;">Η Ψηφιακή μας Εφαρμογή SintaxisApp</h2>
+            <p style="margin: 0; font-size: 1rem; line-height: 1.6; color: rgba(255,255,255,0.95);">
+                Μέσω της εφαρμογής μας, μπορείτε να παρακολουθείτε την <span style="color: #b35a44; font-weight: 700;">πορεία της αίτησής</span> σας, να έχετε πρόσβαση στο <span style="color: #b35a44; font-weight: 700;">ασφαλιστικό σας ιστορικό</span> και να αποστέλλετε άμεσα όλα τα <span style="color: #b35a44; font-weight: 700;">απαραίτητα δικαιολογητικά</span> για την υπόθεσή σας.
+            </p>
+        </div>
+        <div style="flex-shrink: 0; width: 85px; height: 85px; display: flex; align-items: center; justify-content: center;">
+            <img src="icon-512.png" alt="SintaxisApp" style="width: 100%; height: 100%; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.5);" onerror="this.style.display='none';">
         </div>
     </div>
 
@@ -472,7 +472,7 @@
             <span class="promo-badge" style="background: #2563eb;">ONLINE ΠΡΟΓΡΑΜΜΑΤΙΣΜΟΣ</span>
             <h2 style="margin: 0 0 10px 0;">Κλείστε το ραντεβού σας</h2>
             <p style="margin-bottom: 20px;">Επιλέξτε την ημέρα και την ώρα που σας εξυπηρετεί για μια συνάντηση στο γραφείο μας.</p>
-            <a href="https://calendar.app.google/uyssxHBnhQHURkA89" target="_blank" class="promo-btn">ΠΡΟΓΡΑΜΜΑΤΙΣΜΟΣ ΡΑΝΤΕΒΟΥ</a>
+            <a href="https://calendar.app.google/uyssxHBnhQHURkA89" target="_blank" style="background: var(--accent); color: white; border: none; padding: 18px 35px; border-radius: 12px; font-weight: 700; font-size: 1rem; cursor: pointer; text-decoration: none; display: inline-block; margin-top: 20px; transition: var(--transition);">ΠΡΟΓΡΑΜΜΑΤΙΣΜΟΣ ΡΑΝΤΕΒΟΥ</a>
         </div>
     </div>
 
