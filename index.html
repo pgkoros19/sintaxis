@@ -35,7 +35,7 @@
             line-height: 1.6;
             scroll-behavior: smooth;
             width: 100vw;
-            overflow-x: hidden; /* Κλειδώνει το ανεπιθύμητο οριζόντιο scroll */
+            overflow-x: hidden; 
         }
 
         h1, h2, h3, h4 { letter-spacing: -0.5px; }
@@ -55,14 +55,14 @@
 
         .container { max-width: 1200px; margin: auto; padding: 0 20px 40px; }
 
-        /* --- TABS SYSTEM (Βελτιωμένο) --- */
+        /* --- TABS SYSTEM --- */
         .tabs-nav {
             display: flex; justify-content: center; gap: 15px;
-            margin: 0 -20px 40px; /* Απλώνεται σε όλο το πλάτος */
+            margin: 0 -20px 40px; 
             padding: 15px 20px; 
             position: sticky; top: 0; z-index: 1000;
-            background: rgba(241, 245, 249, 0.95); /* Χρώμα φόντου για να μην φαίνεται το κείμενο από πίσω */
-            backdrop-filter: blur(10px); /* Εφέ θολώματος */
+            background: rgba(241, 245, 249, 0.95); 
+            backdrop-filter: blur(10px); 
             -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
@@ -160,10 +160,23 @@
         /* --- Promo Boxes & Booking --- */
         .promo-box {
             background: #1a1f24; color: white; padding: 40px; border-radius: 24px;
-            display: flex; align-items: center; justify-content: space-between; gap: 30px; margin: 80px 0 40px;
+            display: flex; align-items: center; justify-content: flex-start; gap: 30px; margin: 80px 0 40px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 2px solid var(--accent);
         }
-        .promo-box i.main-icon { font-size: 4rem; color: var(--accent); flex-shrink: 0; }
+        
+        /* ΝΕΑ ΣΤΥΛ ΓΙΑ ΤΟ ЛΟΓΟΤΥΠΟ ΣΤΟ PROMO BOX */
+        .promo-logo-img {
+            width: 90px; /* Ιδανικό μέγεθος για υπολογιστή */
+            height: 90px;
+            object-fit: contain; /* Δεν κόβεται, δεν αφήνει κενά */
+            flex-shrink: 0;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); /* Ελαφριά σκιά για βάθος */
+        }
+        
+        .promo-content-wrapper {
+            flex-grow: 1;
+        }
+
         .promo-badge { background: var(--accent); padding: 5px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 800; margin-bottom: 15px; display: inline-block; text-transform: uppercase; letter-spacing: 1.2px; }
 
         .booking-container {
@@ -202,7 +215,7 @@
             display: flex; align-items: center; justify-content: center;
             font-size: 1.5rem; cursor: pointer; transition: var(--transition);
             box-shadow: 0 4px 15px rgba(0,0,0,0.15); position: relative;
-            animation: pulse-fab 2s infinite;
+            animation: pulse-fab 2s infinite; 
         }
         @keyframes pulse-fab { 
             0% { box-shadow: 0 0 0 0 rgba(179, 90, 68, 0.7); }
@@ -258,22 +271,32 @@
             .intro-card { flex-direction: column; text-align: center; padding: 30px 20px; } 
             .toggle-btn { margin: 15px 0 0 0; }
             
-            /* ΛΥΣΗ ΓΙΑ ΤΑ TABS ΣΤΟ ΚΙΝΗΤΟ: Οριζόντιο Scroll (Swipe) */
             .tabs-nav { 
                 justify-content: flex-start; 
-                overflow-x: auto; /* Επιτρέπει το scroll δεξιά-αριστερά */
-                flex-wrap: nowrap; /* Αποτρέπει το σπάσιμο σε 2 γραμμές */
-                -webkit-overflow-scrolling: touch; /* Ομαλό scroll στο iPhone */
+                overflow-x: auto; 
+                flex-wrap: nowrap; 
+                -webkit-overflow-scrolling: touch; 
                 padding: 15px; 
                 margin: 0 -20px 30px; 
             }
-            .tabs-nav::-webkit-scrollbar { display: none; } /* Κρύβει την μπάρα κύλισης για ομορφιά */
-            .tab-btn { flex-shrink: 0; padding: 10px 20px; font-size: 0.85rem; } /* Δεν μικραίνουν τα κουμπιά */
+            .tabs-nav::-webkit-scrollbar { display: none; } 
+            .tab-btn { flex-shrink: 0; padding: 10px 20px; font-size: 0.85rem; } 
             
-            /* Προσαρμογή FAB για κινητά */
             .fab-wrapper { right: 20px; bottom: 80px; }
             .fab-main { width: 50px; height: 50px; font-size: 1.3rem; }
             .fab-btn { width: 40px; height: 40px; font-size: 1rem; }
+            
+            /* ΑΛΛΑΓΕΣ PROMO BOX ΓΙΑ ΚΙΝΗΤΑ: Το λογότυπο πάει πάνω, κεντραρισμένο */
+            .promo-box {
+                flex-direction: column; /* Στοίχιση κάθετα */
+                text-align: center;
+                padding: 30px 20px;
+                gap: 20px;
+            }
+            .promo-logo-img {
+                width: 80px; /* Λίγο μικρότερο στο κινητό */
+                height: 80px;
+            }
         }
     </style>
 </head>
@@ -501,16 +524,14 @@
     </div>
 
     <div class="promo-box reveal">
-        <i class="fas fa-mobile-screen-button main-icon"></i>
-        <div style="flex-grow: 1;">
+        <img src="icon-512.png" alt="SintaxisApp Logo" class="promo-logo-img">
+        
+        <div class="promo-content-wrapper">
             <span class="promo-badge">ΑΠΟΚΛΕΙΣΤΙΚΑ ΓΙΑ ΤΟΥΣ ΠΕΛΑΤΕΣ ΜΑΣ</span>
             <h2 style="margin: 0 0 10px 0; font-size: 1.6rem; color: #fff;">Η Ψηφιακή μας Εφαρμογή SintaxisApp</h2>
             <p style="margin: 0; font-size: 1rem; line-height: 1.6; color: rgba(255,255,255,0.95);">
                 Μέσω της εφαρμογής μας, μπορείτε να <strong>παρακολουθείτε την πορεία της αίτησής σας</strong>, να έχετε πρόσβαση στο ασφαλιστικό σας ιστορικό και να αποστέλλετε άμεσα όλα τα απαραίτητα δικαιολογητικά.
             </p>
-        </div>
-        <div style="flex-shrink: 0; width: 85px; height: 85px;">
-            <img src="icon-512.png" alt="SintaxisApp" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;" onerror="this.style.display='none';">
         </div>
     </div>
 
@@ -594,7 +615,7 @@
             content.classList.add('animate-steps'); 
             
             setTimeout(() => {
-                const offset = 120; // Ρύθμισα λίγο το offset για το κινητό
+                const offset = 120;
                 const elementPosition = cardUnit.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - offset;
                 window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
